@@ -5,11 +5,12 @@ import { updateGame } from './game.js';
 import { spawnEnemy } from './enemies.js';
 import { bindKeyboard } from './keyboard.js';
 import { registerWebMCP } from './webmcp.js';
-import { $ } from './ui.js';
+import { $, updateHud } from './ui.js';
 import { bindTouch } from './touch.js';
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+updateHud(state);
 bindKeyboard();
 bindTouch();
 registerWebMCP().catch((error) => console.warn('WebMCP registration failed:', error));

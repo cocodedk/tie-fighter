@@ -15,6 +15,9 @@
 .stats { display: flex; gap: 16px; align-items: center; }
 .stats span { display: block; color: #9babb4; font-size: 12px; margin-bottom: 3px; }
 .stats strong { font-weight: 500; font-size: 24px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.stats .best-score { margin-top: 4px; white-space: nowrap; }
+.stats .best-score span { display: inline; }
+.best-score b { color: #d5ae78; font-weight: 500; }
 .stats small { font-size: 14px; color: #9babb4; }
 #pause { position: fixed; top: 83px; inset-inline-end: 18px; background: #080c13ba; color: #edf0ee; border: 1px solid #647783; min-height: 44px; padding: 8px 14px; }
 #overlay { position: fixed; inset: 0; display: flex; align-items: center; padding: 110px 24px 120px; background: linear-gradient(90deg, #080c13a8, transparent 85%); }

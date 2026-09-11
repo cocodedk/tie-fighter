@@ -1,7 +1,7 @@
 const fa = document.documentElement.lang === 'fa';
 export const language = fa ? 'fa' : 'en';
 export const text = fa ? {
-  name: 'تای فایتر', subtitle: 'گشت فضایی', score: 'امتیاز', escapes: 'گریخته‌ها',
+  name: 'تای فایتر', subtitle: 'گشت فضایی', score: 'امتیاز', best: 'رکورد', escapes: 'گریخته‌ها',
   readyTitle: 'بازی تای فایتر', readyDescription: 'با جنگندهٔ تای پرواز کن و ایکس‌وینگ‌ها را هدف بگیر. با فرار سه دشمن، مأموریت تمام می‌شود.',
   launch: 'شروع پرواز', resume: 'ادامهٔ پرواز', again: 'پرواز دوباره', pause: 'توقف',
   pausedTitle: 'پرواز متوقف شد.', pausedDescription: 'هر وقت آماده‌ای، ادامه بده.', overTitle: 'بخش از دست رفت.',
@@ -14,7 +14,7 @@ export const text = fa ? {
   loadFailed: 'بازی بارگیری نشد. اتصال اینترنت را بررسی کن و صفحه را دوباره بارگیری کن.',
   unavailable: 'پرواز در دسترس نیست', webgl: 'این بازی به WebGL2 نیاز دارد؛ شتاب‌دهی سخت‌افزاری مرورگر را فعال کن.',
 } : {
-  name: 'TIE Fighter', subtitle: 'Sector patrol', score: 'Score', escapes: 'Escapes',
+  name: 'TIE Fighter', subtitle: 'Sector patrol', score: 'Score', best: 'Best', escapes: 'Escapes',
   readyTitle: 'TIE Fighter game', readyDescription: 'Pilot your TIE fighter. Take down the X-wings. Three escapes, and the sector is lost.',
   launch: 'LAUNCH FIGHTER', resume: 'RESUME FLIGHT', again: 'FLY AGAIN', pause: 'Pause',
   pausedTitle: 'Patrol paused.', pausedDescription: 'Ready when you are, pilot.', overTitle: 'Sector lost.',
