@@ -11,6 +11,7 @@ export const text = fa ? {
   fly: 'حرکت', fire: 'شلیک', touchHint: 'با جهت‌ها حرکت کن و دکمهٔ شلیک را نگه دار.',
   up: 'بالا', down: 'پایین', left: 'چپ', right: 'راست', canvas: 'بازی پرواز جنگندهٔ تای',
   escape: (remaining) => remaining ? `یک ایکس‌وینگ گریخت؛ ${remaining} فرصت باقی است` : 'دشمن از بخش عبور کرد',
+  loadFailed: 'بازی بارگیری نشد. اتصال اینترنت را بررسی کن و صفحه را دوباره بارگیری کن.',
   unavailable: 'پرواز در دسترس نیست', webgl: 'این بازی به WebGL2 نیاز دارد؛ شتاب‌دهی سخت‌افزاری مرورگر را فعال کن.',
 } : {
   name: 'TIE Fighter', subtitle: 'Sector patrol', score: 'Score', escapes: 'Escapes',
@@ -23,6 +24,7 @@ export const text = fa ? {
   fly: 'Fly', fire: 'Fire', touchHint: 'Use the directions to fly. Hold Fire to shoot.',
   up: 'Up', down: 'Down', left: 'Left', right: 'Right', canvas: 'TIE fighter flight game',
   escape: (remaining) => remaining ? `X-wing escaped. ${remaining} ${remaining === 1 ? 'chance' : 'chances'} left.` : 'Sector breached',
+  loadFailed: 'The game could not load. Check your connection and reload the page.',
   unavailable: 'Flight unavailable', webgl: 'This game needs WebGL2. Enable hardware acceleration in your browser.',
 };
 
