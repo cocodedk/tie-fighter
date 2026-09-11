@@ -4,7 +4,10 @@ const start = document.getElementById('start');
 start.disabled = true;
 
 try {
-  await document.fonts.ready;
+  await Promise.race([
+    document.fonts.ready,
+    new Promise((resolve) => setTimeout(resolve, 1000)),
+  ]);
   await new Promise((resolve) => {
     requestAnimationFrame(() => setTimeout(resolve, 0));
   });
