@@ -15,6 +15,7 @@ X-wings, and hold the sector for as long as you can; no account needed.
 - Procedural ships, green lasers, a red aiming cross, and a moving star field.
 - Keyboard and touch controls, with English and Persian interfaces.
 - Destroy X-wings for 100 points each; three escapes end the run.
+- Your best score is saved in this browser and shared between both languages.
 - Native Chrome WebMCP tools for inspecting and controlling the game.
 
 Press Enter or select **Launch Fighter** to start; use WASD or arrow keys to move

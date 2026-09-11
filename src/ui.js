@@ -6,6 +6,7 @@ localize();
 
 export function updateHud(state) {
   $('score').textContent = String(state.score).padStart(4, '0');
+  $('best-score').textContent = String(state.bestScore).padStart(4, '0');
   $('escapes').innerHTML = `${state.escapes} <small>/ 3</small>`;
 }
 

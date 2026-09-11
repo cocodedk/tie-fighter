@@ -3,7 +3,7 @@
 Enable `chrome://flags/#enable-webmcp-testing`, relaunch Chrome, and open the game.
 Five native tools are exposed through `document.modelContext`:
 
-- `get_game_state`: mode, score, escapes, positions, bounds, and active projectiles.
+- `get_game_state`: mode, score, `bestScore`, escapes, positions, bounds, and active projectiles.
 - `start_game`: start or reset a run.
 - `pause_game` / `resume_game`: control the current run.
 - `control_fighter`: horizontal/vertical input (-1, 0, 1), `fire`, and `duration_ms`

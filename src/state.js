@@ -1,7 +1,8 @@
 import { player } from './world.js';
+import { readBestScore } from './scores.js';
 
 export const state = {
-  mode: 'ready', score: 0, escapes: 0, elapsed: 0,
+  mode: 'ready', score: 0, bestScore: readBestScore(), escapes: 0, elapsed: 0,
   fireCooldown: 0, spawnCooldown: 0, noticeTime: 0, hitTime: 0,
   keys: new Set(), enemies: [], shots: [], debris: [], agent: null,
 };
@@ -13,6 +14,7 @@ export function getState() {
   return {
     mode: state.mode,
     score: state.score,
+    bestScore: state.bestScore,
     escapes: state.escapes,
     escapeLimit: 3,
     elapsedSeconds: state.elapsed,

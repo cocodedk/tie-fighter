@@ -3,6 +3,7 @@ import { mesh, boltGeometry, laserMaterial, sparkGeometry, sparkMaterial, metal 
 import { scene, player } from './world.js';
 import { state } from './state.js';
 import { updateHud } from './ui.js';
+import { saveBestScore } from './scores.js';
 
 const segment = new THREE.Line3();
 const closest = new THREE.Vector3();
@@ -43,6 +44,7 @@ export function updateCombat(dt) {
         scene.remove(enemy.ship);
         enemies.splice(j, 1);
         state.score += 100;
+        if (state.score > state.bestScore) state.bestScore = saveBestScore(state.score);
         updateHud(state);
         state.hitTime = 0.15;
         hit = true;
