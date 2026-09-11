@@ -3,8 +3,8 @@ import { expect } from '@playwright/test';
 export async function openGame(page) {
   await page.addInitScript(() => { Math.random = () => 0.5; });
   await page.goto('/');
-  await page.waitForFunction(async () =>
-    (await document.modelContext?.getTools())?.length === 5);
+  await expect.poll(async () => page.evaluate(async () =>
+    (await document.modelContext?.getTools())?.length), { timeout: 10000 }).toBe(5);
 }
 
 export async function callTool(page, name, input = {}) {
