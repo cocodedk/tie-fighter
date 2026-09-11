@@ -59,6 +59,13 @@ export default function siteMetadata() {
         html: cleaned.replace(/<head\b[^>]*>/i, `$&\n<!-- SEO keywords: ${copy.keywords} -->`),
         tags: [
           { tag: 'title', children: copy.title, injectTo: 'head' },
+          {
+            tag: 'link', injectTo: 'head',
+            attrs: {
+              rel: 'preload', as: 'font', type: 'font/woff2', crossorigin: 'anonymous',
+              href: language === 'fa' ? '../fonts/vazirmatn-variable-arabic.woff2' : './fonts/barlow-condensed-700-latin.woff2',
+            },
+          },
           meta('description', copy.description), meta('robots', 'index, follow'),
           { tag: 'link', attrs: { rel: 'canonical', href: url }, injectTo: 'head' },
           ...[['en', base], ['fa', `${base}fa/`], ['x-default', base]].map(([hreflang, href]) => ({
