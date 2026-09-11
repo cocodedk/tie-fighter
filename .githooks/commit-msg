@@ -1,0 +1,7 @@
+#!/bin/sh
+set -eu
+subject=$(head -n 1 "$1")
+if ! printf '%s\n' "$subject" | grep -Eq '^(feat|fix|chore|docs|style|refactor|test|ci|build|perf|revert)(\([^()]+\))?!?: .+'; then
+  echo 'Commit subject must use Conventional Commits, e.g. feat: add flight controls.' >&2
+  exit 1
+fi

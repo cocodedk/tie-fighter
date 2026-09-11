@@ -1,0 +1,17 @@
+.controls { display: none; gap: 22px; }
+.controls > span { display: flex; align-items: center; gap: 6px; color: #9babb4; font-size: 14px; }
+kbd { color: #edf0ee; font: inherit; }
+.touch-controls { position: fixed; bottom: max(75px, calc(env(safe-area-inset-bottom) + 64px)); inset-inline: 18px; display: flex; justify-content: space-between; align-items: end; pointer-events: none; direction: ltr; }
+.touch-controls button { min-width: 48px; min-height: 48px; border: 1px solid #9babb480; color: #edf0ee; background: #14232cd9; touch-action: none; user-select: none; pointer-events: auto; }
+.touch-controls button:active, .touch-controls button.held { background: #657d8d; }
+.direction-pad { display: grid; grid-template-columns: repeat(3, 48px); gap: 4px; }
+.direction-pad button { font-size: 24px; border-radius: 6px; }
+[data-control='TouchUp'] { grid-column: 2; }
+[data-control='TouchLeft'] { grid-column: 1; grid-row: 2; }
+[data-control='TouchDown'] { grid-column: 2; grid-row: 2; }
+[data-control='TouchRight'] { grid-column: 3; grid-row: 2; }
+.touch-controls .fire-button { width: 76px; height: 76px; border-radius: 50%; border-color: #d5ae78; color: #f2d4a9; font-weight: 600; }
+@media (min-width: 768px) and (pointer: fine) {
+  .touch-controls { display: none; }
+  .controls { display: flex; }
+}

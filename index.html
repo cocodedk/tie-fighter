@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#080c13" />
+    <meta name="description" content="Fly a low-poly TIE fighter, defend the sector and chase your high score. Play with your keyboard or touch controls." />
+    <title>TIE Fighter | Sector Patrol</title>
+    <!-- PUBLIC_SITE_METADATA -->
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <canvas id="game" aria-label="TIE fighter flight game" data-label="canvas"></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+    <header class="hud">
+      <div class="identity"><span class="insignia" aria-hidden="true">✳</span><div><strong data-text="name">TIE Fighter</strong><span class="subtitle" data-text="subtitle">Sector patrol</span></div></div>
+      <div class="stats">
+        <div><span data-text="score">Score</span><strong id="score">0000</strong></div>
+        <div><span data-text="escapes">Escapes</span><strong id="escapes">0 <small>/ 3</small></strong></div>
+        <button id="pause" type="button" data-text="pause" hidden>Pause</button>
+      </div>
+    </header>
+    <div id="reticle" aria-hidden="true"><span></span></div>
+    <div id="hit" aria-hidden="true">×</div>
+    <main id="overlay">
+      <section class="intro" aria-labelledby="title">
+        <h1 id="title" data-text="readyTitle">TIE Fighter game</h1>
+        <p class="description" id="description" data-text="readyDescription">Pilot your TIE fighter. Take down the X-wings. Three escapes, and the sector is lost.</p>
+        <button id="start" type="button" data-text="launch">LAUNCH FIGHTER</button>
+        <p class="start-hint" id="start-hint" data-text="enter">Or press Enter</p>
+        <p class="touch-hint" data-text="touchHint">Use the directions to fly. Hold Fire to shoot.</p>
+      </section>
+    </main>
+    <div id="notice" role="status" aria-live="polite"></div>
+    <nav class="touch-controls" aria-label="Flight controls" hidden>
+      <div class="direction-pad">
+        <button type="button" data-control="TouchUp" data-label="up" aria-label="Up">↑</button>
+        <button type="button" data-control="TouchLeft" data-label="left" aria-label="Left">←</button>
+        <button type="button" data-control="TouchDown" data-label="down" aria-label="Down">↓</button>
+        <button type="button" data-control="TouchRight" data-label="right" aria-label="Right">→</button>
+      </div>
+      <button class="fire-button" type="button" data-control="TouchFire" data-text="fire">Fire</button>
+    </nav>
+    <footer>
+      <div class="controls"><span><kbd>WASD</kbd> / <kbd>↑↓←→</kbd> <span data-text="fly">Fly</span></span><span><kbd>Space</kbd> <span data-text="fire">Fire</span></span><span><kbd>Esc</kbd> <span data-text="pause">Pause</span></span></div>
+      <div class="credits"><span>© 2026</span><a href="https://cocode.dk" target="_blank" rel="noopener noreferrer">Cocode</a><span> / </span><a href="https://linkedin.com/in/babakbandpey" target="_blank" rel="noopener noreferrer">Babak Bandpey</a><a class="language" href="./fa/" lang="fa" hreflang="fa">فارسی</a></div>
+      <span class="status" id="status" data-text="ready">Awaiting pilot</span>
+    </footer>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

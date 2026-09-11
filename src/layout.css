@@ -1,0 +1,56 @@
+.hud {
+  position: fixed;
+  inset: 0 0 auto;
+  padding: max(18px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) 12px max(18px, env(safe-area-inset-left));
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 12px;
+  z-index: 2;
+}
+.identity { display: flex; align-items: center; gap: 8px; }
+.insignia { font-size: 32px; color: #d5ae78; line-height: 1; }
+.identity strong { display: block; font-size: 18px; font-weight: 600; }
+.subtitle { display: block; margin-top: 3px; font-size: 12px; color: #9babb4; }
+.stats { display: flex; gap: 16px; align-items: center; }
+.stats span { display: block; color: #9babb4; font-size: 12px; margin-bottom: 3px; }
+.stats strong { font-weight: 500; font-size: 24px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.stats small { font-size: 14px; color: #9babb4; }
+#pause { position: fixed; top: 83px; inset-inline-end: 18px; background: #080c13ba; color: #edf0ee; border: 1px solid #647783; min-height: 44px; padding: 8px 14px; }
+#overlay { position: fixed; inset: 0; display: flex; align-items: center; padding: 110px 24px 120px; background: linear-gradient(90deg, #080c13a8, transparent 85%); }
+.intro { margin-top: -35px; }
+footer { position: fixed; inset: auto 0 0; padding: 8px 18px max(10px, env(safe-area-inset-bottom)); display: flex; justify-content: space-between; align-items: center; gap: 16px; background: #080c1366; }
+.credits { display: flex; flex-wrap: wrap; align-items: center; column-gap: 6px; font-size: 12px; }
+.credits a { display: inline-flex; min-width: 44px; min-height: 44px; align-items: center; }
+.language { margin-inline-start: 12px; padding-inline: 6px; }
+.status { display: none; font-size: 13px; color: #9babb4; }
+body.playing .credits { opacity: .8; }
+#notice { position: fixed; top: 138px; inset-inline: 20px; text-align: center; color: #e6a283; pointer-events: none; font-size: 16px; }
+@media (min-width: 768px) {
+  .hud { padding: 30px 36px; align-items: center; }
+  .identity { gap: 14px; }
+  .insignia { font-size: 42px; }
+  .identity strong { font-size: 24px; }
+  .subtitle { font-size: 14px; }
+  .stats { gap: 32px; }
+  .stats strong { font-size: 30px; }
+  .stats span { font-size: 14px; }
+  #pause { position: static; }
+  #overlay { padding: 120px 9vw; }
+  .intro { margin-top: 0; }
+  footer { padding: 10px 36px; flex-wrap: wrap; }
+  .credits { font-size: 14px; }
+}
+@media (min-width: 1100px) {
+  .status { display: block; }
+}
+@media (orientation: landscape) and (max-height: 550px) {
+  #overlay { padding-block: 82px 58px; }
+  .intro { margin: 0; }
+  h1 { font-size: 56px; max-width: none; }
+  html[dir='rtl'] h1 { font-size: 38px; max-width: none; }
+  .description { margin: 10px 0 14px; max-width: 44ch; font-size: 14px; }
+  .start-hint, .touch-hint { display: none; }
+  .hud { padding-top: 12px; }
+  #pause { top: 12px; inset-inline-end: 190px; }
+}

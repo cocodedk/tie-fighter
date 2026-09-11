@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#080c13" />
+    <meta name="description" content="با جنگندهٔ تای از این بخش محافظت کن؛ یک بازی فضایی با صفحه‌کلید یا کنترل لمسی." />
+    <title>تای فایتر | گشت فضایی</title>
+    <!-- PUBLIC_SITE_METADATA -->
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <canvas id="game" aria-label="TIE fighter flight game" data-label="canvas"></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+    <header class="hud">
+      <div class="identity"><span class="insignia" aria-hidden="true">✳</span><div><strong data-text="name">تای فایتر</strong><span class="subtitle" data-text="subtitle">گشت فضایی</span></div></div>
+      <div class="stats">
+        <div><span data-text="score">امتیاز</span><strong id="score">0000</strong></div>
+        <div><span data-text="escapes">گریخته‌ها</span><strong id="escapes">0 <small>/ 3</small></strong></div>
+        <button id="pause" type="button" data-text="pause" hidden>توقف</button>
+      </div>
+    </header>
+    <div id="reticle" aria-hidden="true"><span></span></div>
+    <div id="hit" aria-hidden="true">×</div>
+    <main id="overlay">
+      <section class="intro" aria-labelledby="title">
+        <h1 id="title" data-text="readyTitle">بازی تای فایتر</h1>
+        <p class="description" id="description" data-text="readyDescription">با جنگندهٔ تای پرواز کن و ایکس‌وینگ‌ها را هدف بگیر. با فرار سه دشمن، مأموریت تمام می‌شود.</p>
+        <button id="start" type="button" data-text="launch">شروع پرواز</button>
+        <p class="start-hint" id="start-hint" data-text="enter">یا Enter را بزن</p>
+        <p class="touch-hint" data-text="touchHint">با جهت‌ها حرکت کن و دکمهٔ شلیک را نگه دار.</p>
+      </section>
+    </main>
+    <div id="notice" role="status" aria-live="polite"></div>
+    <nav class="touch-controls" aria-label="کنترل پرواز" hidden>
+      <div class="direction-pad">
+        <button type="button" data-control="TouchUp" data-label="up" aria-label="بالا">↑</button>
+        <button type="button" data-control="TouchLeft" data-label="left" aria-label="چپ">←</button>
+        <button type="button" data-control="TouchDown" data-label="down" aria-label="پایین">↓</button>
+        <button type="button" data-control="TouchRight" data-label="right" aria-label="راست">→</button>
+      </div>
+      <button class="fire-button" type="button" data-control="TouchFire" data-text="fire">شلیک</button>
+    </nav>
+    <footer>
+      <div class="controls"><span><kbd>WASD</kbd> / <kbd>↑↓←→</kbd> <span data-text="fly">حرکت</span></span><span><kbd>Space</kbd> <span data-text="fire">شلیک</span></span><span><kbd>Esc</kbd> <span data-text="pause">توقف</span></span></div>
+      <div class="credits"><span>© ۱۴۰۵</span><a href="https://cocode.dk" target="_blank" rel="noopener noreferrer">Cocode</a><span> / </span><a href="https://linkedin.com/in/babakbandpey" target="_blank" rel="noopener noreferrer">بابک بندپی</a><a class="language" href="../" lang="en" hreflang="en">English</a></div>
+      <span class="status" id="status" data-text="ready">منتظر خلبان</span>
+    </footer>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

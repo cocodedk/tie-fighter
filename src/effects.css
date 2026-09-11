@@ -1,0 +1,7 @@
+#reticle { display: none; position: fixed; width: 36px; height: 36px; transform: translate(-50%, -50%); pointer-events: none; filter: drop-shadow(0 0 3px #000); }
+#reticle::before, #reticle::after { content: ''; position: absolute; background: #ff5555; }
+#reticle::before { top: 17px; left: 0; width: 13px; height: 2px; box-shadow: 23px 0 #ff5555; }
+#reticle::after { left: 17px; top: 0; width: 2px; height: 13px; box-shadow: 0 23px #ff5555; }
+#reticle span { position: absolute; width: 4px; height: 4px; background: #ff5555; left: 16px; top: 16px; }
+body.playing #reticle { display: block; }
+#hit { position: fixed; color: #fff2b7; font-size: 50px; line-height: 1; transform: translate(-50%, -50%); pointer-events: none; opacity: 0; }

@@ -1,0 +1,25 @@
+{
+  "name": "tie-fighter",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "npm run check:files && playwright test --forbid-only --reporter=list,./scripts/test-report.js",
+    "check:files": "node scripts/check-size.js",
+    "lint": "oxlint --deny-warnings . && biome lint --error-on-warnings .",
+    "verify": "npm run lint && npm test && npm run build"
+  },
+  "dependencies": {
+    "three": "^0.186.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.13",
+    "@playwright/test": "^1.63.0",
+    "oxlint": "^1.82.0",
+    "vite": "^8.3.0"
+  },
+  "license": "Apache-2.0"
+}

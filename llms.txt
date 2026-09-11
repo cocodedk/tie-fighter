@@ -1,0 +1,24 @@
+# TIE Fighter
+
+> A free browser space shooter with procedural low-poly ships, built with Three.js.
+
+Fly with WASD, arrow keys, or touch controls, and fire at X-wings for 100 points
+each. Three escaped enemies end a run. The game has English and Persian interfaces
+and optional native Chrome WebMCP tools. A WebGL2-capable browser is required.
+
+## Play
+
+- [English game](https://cocodedk.github.io/tie-fighter/): Play in English.
+- [Persian game](https://cocodedk.github.io/tie-fighter/fa/): Play with a Persian interface.
+
+## Development
+
+- [Repository](https://github.com/cocodedk/tie-fighter): Source and build instructions.
+- [Contributing](https://github.com/cocodedk/tie-fighter/blob/main/CONTRIBUTING.md): Setup and checks.
+- [WebMCP guide](https://github.com/cocodedk/tie-fighter/blob/main/docs/webmcp.md): Native tool setup and examples.
+- [License](https://github.com/cocodedk/tie-fighter/blob/main/LICENSE): Apache-2.0.
+
+## Optional
+
+- [Cocode](https://cocode.dk): The creator's company.
+- [Babak Bandpey](https://linkedin.com/in/babakbandpey): Creator profile.

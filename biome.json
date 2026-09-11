@@ -1,0 +1,25 @@
+{
+  "files": {
+    "includes": [
+      "**/*.css",
+      "**/*.json",
+      "!!**/node_modules",
+      "!!**/dist",
+      "!!**/test-results",
+      "!!**/playwright-report",
+      "!!package-lock.json"
+    ]
+  },
+  "formatter": {
+    "enabled": false
+  },
+  "assist": {
+    "enabled": false
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "preset": "recommended"
+    }
+  }
+}
