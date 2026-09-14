@@ -33,10 +33,11 @@ function animate(time) {
   if ((state.mode === 'ready' && !reducedMotion.matches) || state.mode === 'playing') {
     updateStars(dt, state.mode === 'playing' ? 28 : 3);
   }
-  const tracking = state.mode === 'ready' ? 0 : 0.55;
-  const smoothing = 1 - Math.exp(-5 * dt);
+  const tracking = state.mode === 'ready' ? 0 : 0.35;
+  const smoothing = state.mode === 'ready' ? 1 - Math.exp(-5 * dt) : 1;
+  const height = state.mode === 'ready' ? 4 : 2 + player.position.y * 0.6;
   camera.position.x = THREE.MathUtils.lerp(camera.position.x, player.position.x * tracking, smoothing);
-  camera.position.y = THREE.MathUtils.lerp(camera.position.y, 4 + player.position.y * tracking, smoothing);
+  camera.position.y = THREE.MathUtils.lerp(camera.position.y, height, smoothing);
   target.set(camera.position.x, camera.position.y - 3, -35);
   camera.lookAt(target);
   camera.updateMatrixWorld();

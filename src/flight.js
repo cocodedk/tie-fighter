@@ -11,10 +11,10 @@ export function updateFlight(dt) {
   const down = keys.has('KeyS') || keys.has('ArrowDown') || keys.has('TouchDown');
   const dx = agent ? agent.horizontal : Number(right) - Number(left);
   const dy = agent ? agent.vertical : Number(up) - Number(down);
-  const step = (14 * dt) / (dx && dy ? Math.SQRT2 : 1);
+  const step = (24 * dt) / (dx && dy ? Math.SQRT2 : 1);
   player.position.x = THREE.MathUtils.clamp(player.position.x + dx * step, -bounds.x, bounds.x);
   player.position.y = THREE.MathUtils.clamp(player.position.y + dy * step, -bounds.y, bounds.y);
-  const smoothing = 1 - Math.exp(-8 * dt);
+  const smoothing = 1 - Math.exp(-20 * dt);
   player.rotation.z = THREE.MathUtils.lerp(player.rotation.z, -dx * 0.3, smoothing);
   player.rotation.x = THREE.MathUtils.lerp(player.rotation.x, dy * 0.15, smoothing);
   player.rotation.y = THREE.MathUtils.lerp(player.rotation.y, -dx * 0.1, smoothing);

@@ -1,8 +1,8 @@
 import * as THREE from 'three';
 import { mesh, boltGeometry, laserMaterial, sparkGeometry, sparkMaterial, metal } from './parts.js';
 import { scene, player } from './world.js';
-import { state } from './state.js';
-import { updateHud } from './ui.js';
+import { state, maxHealth, killsPerRepair } from './state.js';
+import { updateHud, showRepair } from './ui.js';
 import { saveBestScore } from './scores.js';
 
 const segment = new THREE.Line3();
@@ -44,6 +44,12 @@ export function updateCombat(dt) {
         scene.remove(enemy.ship);
         enemies.splice(j, 1);
         state.score += 100;
+        if (state.score % (killsPerRepair * 100) === 0) {
+          state.health = maxHealth;
+          state.damageTime = 0;
+          state.noticeTime = 2;
+          showRepair();
+        }
         if (state.score > state.bestScore) state.bestScore = saveBestScore(state.score);
         updateHud(state);
         state.hitTime = 0.15;

@@ -6,7 +6,7 @@ export default defineConfig({
   timeout: 30000,
   use: {
     channel: 'chrome',
-    baseURL: 'http://localhost:5173',
+    baseURL: 'http://localhost:5174',
     viewport: { width: 960, height: 640 },
     launchOptions: { args: [
       '--enable-features=WebMCP', '--enable-blink-features=WebMCP',
@@ -14,7 +14,7 @@ export default defineConfig({
     ] },
   },
   webServer: {
-    command: 'npm run dev -- --port 5173 --strictPort',
-    url: 'http://localhost:5173', reuseExistingServer: !process.env.CI,
+    command: 'npm run dev -- --port 5174 --strictPort',
+    url: 'http://localhost:5174', reuseExistingServer: false,
   },
 });

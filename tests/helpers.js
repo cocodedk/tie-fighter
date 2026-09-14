@@ -1,6 +1,14 @@
 import { expect } from '@playwright/test';
 
+const modules = new WeakMap();
+
 export async function openGame(page) {
+  const urls = {};
+  modules.set(page, urls);
+  page.on('response', (response) => {
+    const match = new URL(response.url()).pathname.match(/^\/src\/([\w-]+)\.js$/);
+    if (match) urls[match[1]] = response.url();
+  });
   await page.addInitScript(() => { Math.random = () => 0.5; });
   await page.goto('/');
   await expect.poll(async () => page.evaluate(async () =>
@@ -23,4 +31,13 @@ export async function holdKey(page, key, duration = 350) {
 
 export async function expectMode(page, mode) {
   expect((await callTool(page, 'get_game_state')).mode).toBe(mode);
+}
+
+export function gameModuleUrls(page, names) {
+  // Use the running game's exact URLs, including Vite's hot-reload timestamps.
+  return Object.fromEntries(names.map((name) => {
+    const url = modules.get(page)?.[name];
+    if (!url) throw new Error(`Game module not loaded: ${name}`);
+    return [name, url];
+  }));
 }

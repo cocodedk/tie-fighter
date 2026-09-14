@@ -7,14 +7,14 @@ export default class TestCountReporter {
 
   onEnd(result) {
     try {
-      assert.equal(this.tests.length, 12, 'Expected exactly 12 gameplay and native WebMCP tests');
+      assert.equal(this.tests.length, 19, 'Expected exactly 19 gameplay and native WebMCP tests');
       assert.equal(result.status, 'passed', 'Every test must pass');
       for (const test of this.tests) {
         assert.equal(test.expectedStatus, 'passed', `${test.title}: expected failures are forbidden`);
         assert.equal(test.results.length, 1, `${test.title}: retries are forbidden`);
         assert.equal(test.results[0].status, 'passed', `${test.title}: skipped/failed tests are forbidden`);
       }
-      console.log('Verified test count: 12 passed, 0 skipped, 0 retries.');
+      console.log('Verified test count: 19 passed, 0 skipped, 0 retries.');
     } catch (error) {
       console.error(error.message);
       return { status: 'failed' };
