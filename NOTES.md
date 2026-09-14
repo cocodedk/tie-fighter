@@ -1,3 +1,18 @@
+## 2026-09-14 (Codex) — Darth Vader ending ready for publication
+
+**State:** Independent source and visual review complete; all eight production
+language/viewport checks passed using `/tmp/tie-vader-check.mjs`.
+
+**Tried:** The full suite passed 29 tests before a reload-readiness race; waiting
+for native tool registration fixed it, and both focused victory tests then passed.
+Final model screenshots are in `/tmp/tie-vader/`.
+
+**Lesson:** A failed save must not resurrect a completed campaign after New game;
+readiness checks must wait for live behavior rather than placeholder HTML.
+
+**Next:** Run the mandatory 30-test push gate, merge green CI, and verify the
+published ending, new campaigns, and production assets.
+
 ## 2026-09-14 (Codex) — pilot progression ready for publication
 
 **State:** Implementation and independent review complete; publication gates pending.

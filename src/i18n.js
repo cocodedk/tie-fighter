@@ -1,6 +1,8 @@
 const fa = document.documentElement.lang === 'fa';
 export const language = fa ? 'fa' : 'en';
 export const text = fa ? {
+  won: 'پیروزی امپراتوری', wonTitle: 'این بخش از آنِ ماست.', newGame: 'بازی جدید',
+  wonDescription: 'نیروهای شورشی شکست خوردند. یک بازی جدید را از درجهٔ دانشجو آغاز کن.',
   name: 'تای فایتر', score: 'امتیاز', best: 'رکورد', hull: 'بدنه', escapes: 'گریخته‌ها',
   readyTitle: 'بازی تای فایتر', readyDescription: 'ایکس‌وینگ‌ها را شکار کن و از لیزرهای قرمزشان جاخالی بده. با صفر شدن سلامت بدنه یا فرار سه دشمن، گشت تمام می‌شود.',
   launch: 'شروع پرواز', resume: 'ادامهٔ پرواز', again: 'پرواز دوباره', pause: 'توقف',
@@ -16,6 +18,8 @@ export const text = fa ? {
   loadFailed: 'بازی بارگیری نشد. اتصال اینترنت را بررسی کن و صفحه را دوباره بارگیری کن.',
   unavailable: 'پرواز در دسترس نیست', webgl: 'این بازی به WebGL2 نیاز دارد؛ شتاب‌دهی سخت‌افزاری مرورگر را فعال کن.',
 } : {
+  won: 'Imperial victory', wonTitle: 'The sector is ours.', newGame: 'New game',
+  wonDescription: 'The Rebel forces are defeated. Start a new game to rise from Cadet again.',
   name: 'TIE Fighter', score: 'Score', best: 'Best', hull: 'Hull', escapes: 'Escapes',
   readyTitle: 'TIE Fighter game', readyDescription: 'Hunt X-wings and dodge their red lasers. The patrol ends at zero hull or three escapes.',
   launch: 'LAUNCH FIGHTER', resume: 'RESUME FLIGHT', again: 'FLY AGAIN', pause: 'Pause',

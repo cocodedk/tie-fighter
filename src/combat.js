@@ -46,7 +46,9 @@ export function updateCombat(dt) {
         scene.remove(enemy.ship);
         enemies.splice(j, 1);
         state.score += 100;
-        showAwards(recordKill(state.score / 100));
+        const unlocked = recordKill(state.score / 100);
+        state.victoryPending ||= unlocked.some(({ type, id }) => type === 'rank' && id === 'darthVader');
+        showAwards(unlocked);
         if (state.score % (killsPerRepair * 100) === 0) {
           state.health = maxHealth;
           state.damageTime = 0;
@@ -64,6 +66,7 @@ export function updateCombat(dt) {
       scene.remove(shot.mesh);
       shots.splice(i, 1);
     }
+    if (state.victoryPending) return;
   }
 
   for (let i = debris.length - 1; i >= 0; i--) {

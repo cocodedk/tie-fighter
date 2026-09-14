@@ -11,7 +11,7 @@ export function bindKeyboard() {
     'Space', 'Escape', 'Enter',
   ];
   window.addEventListener('keydown', (event) => {
-    if ($('service-record').open) return;
+    if (document.querySelector('dialog[open]')) return;
     if (!codes.includes(event.code)) return;
     if (event.target.closest?.('a, button') && ['Enter', 'Space'].includes(event.code)) return;
     event.preventDefault();

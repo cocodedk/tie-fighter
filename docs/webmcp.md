@@ -6,8 +6,10 @@ Five native tools are exposed through `document.modelContext`:
 - `get_game_state`: mode, score, `bestScore`, `health`, `maxHealth`, escapes,
   positions, bounds, and active projectiles; `enemyShots` includes positions and
   fixed velocities, and `invulnerableSeconds` reports protection after a hit.
-  `career` includes lifetime `kills`, `bestRun`, `rank`, `nextRank`, and medals/honors
-  with kill thresholds and `earned` flags; restarting preserves this record.
+  `career` includes lifetime `kills`, `campaignKills`, `bestRun`, `rank`, `nextRank`, and medals/honors
+  with kill thresholds and `earned` flags; new games retain earned awards.
+  At Darth Vader the mode becomes `won`; `victory` reports animation state,
+  and `start_game` begins a new campaign while `resume_game` cannot resume a win.
   `killsUntilRepair` counts down to a full hull repair every five kills.
 - `start_game`: start or reset a run.
 - `pause_game` / `resume_game`: control the current run.

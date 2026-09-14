@@ -1,5 +1,6 @@
 import { getCareer } from './career.js';
 import { careerText as text } from './career-text.js';
+import { showVictory } from './victory.js';
 
 const $ = (id) => document.getElementById(id);
 let bannerTime = 0;
@@ -30,10 +31,12 @@ export function renderCareer() {
   $('career-rank').textContent = text[record.rank.id];
   $('career-kills').textContent = text.careerKills(record.kills);
   $('career-best').textContent = text.bestRun(record.bestRun);
+  $('campaign-kills').textContent = text.campaign(record.campaignKills);
+  $('victory-replay').hidden = record.kills < 250;
   const next = record.nextRank;
   $('career-next').textContent = next ? text.next(next.remaining, text[next.id]) : text.highest;
   $('rank-progress').max = next ? next.kills - record.rank.kills : 1;
-  $('rank-progress').value = next ? record.kills - record.rank.kills : 1;
+  $('rank-progress').value = next ? record.campaignKills - record.rank.kills : 1;
   for (const type of ['medals', 'honors']) {
     $(type).replaceChildren(...record[type].map((award) => awardTile(award, type)));
   }
@@ -49,6 +52,7 @@ export function bindCareer() {
     $('service-record').showModal();
   });
   $('service-close').addEventListener('click', () => $('service-record').close());
+  $('victory-replay').addEventListener('click', () => showVictory());
   updateCareerHud();
 }
 

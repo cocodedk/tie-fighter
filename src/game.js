@@ -7,6 +7,8 @@ import { updateCombat } from './combat.js';
 import { finishControl } from './agent-control.js';
 import { updateEnemyFire } from './enemy-fire.js';
 import { clearAwards } from './career-ui.js';
+import { getCareer, restartCampaign } from './career.js';
+import { showVictory, closeVictory } from './victory.js';
 
 const previousPlayer = player.position.clone();
 
@@ -18,6 +20,8 @@ function setMode(mode) {
 }
 
 export function start() {
+  closeVictory();
+  if (getCareer().campaignKills === 250) restartCampaign();
   clearAwards();
   finishControl('interrupted');
   for (const [objects, key] of [
@@ -28,7 +32,7 @@ export function start() {
     objects.length = 0;
   }
   Object.assign(state, {
-    score: 0, escapes: 0, elapsed: 0, fireCooldown: 0,
+    score: 0, escapes: 0, elapsed: 0, fireCooldown: 0, victoryPending: false,
     health: maxHealth, invulnerableTime: 0, damageTime: 0,
     spawnCooldown: 2.5, noticeTime: 0, hitTime: 0,
   });
@@ -48,12 +52,17 @@ export function pause() {
 }
 
 export function resume() {
-  if (state.mode === 'paused') setMode('playing');
+  if (state.mode === 'paused') { closeVictory(); setMode('playing'); }
 }
 
 export function launchOrResume() {
   if (state.mode === 'paused') resume();
   else if (state.mode !== 'playing') start();
+}
+
+export function winGame() {
+  showVictory(true);
+  setMode('won');
 }
 
 export function updateGame(dt) {
@@ -66,6 +75,7 @@ export function updateGame(dt) {
     return;
   }
   updateCombat(dt);
+  if (state.victoryPending) { state.victoryPending = false; winGame(); return; }
   updateEnemyFire(dt, previousPlayer);
   updateEffects(state, dt);
   if (state.health === 0) {

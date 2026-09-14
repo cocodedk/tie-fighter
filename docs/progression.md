@@ -1,9 +1,9 @@
 # Pilot progression plan
 
 Kills build a permanent service record in this browser; restarting a run keeps it.
-Awards are cosmetic, so flight, damage, scoring, and five-kill repairs stay balanced.
+Medals and honors are cosmetic; flight, damage, scoring, and five-kill repairs stay balanced.
 
-## Ranks — lifetime kills
+## Ranks — kills in the current campaign
 
 | Rank | Kills |
 | --- | ---: |
@@ -12,7 +12,15 @@ Awards are cosmetic, so flight, damage, scoring, and five-kill repairs stay bala
 | Lieutenant | 25 |
 | Captain | 50 |
 | Commander | 100 |
-| Admiral | 250 |
+| Darth Vader | 250 |
+
+At 250 campaign kills, the game ends immediately in victory: a procedural low-poly
+Darth Vader raises his arm and ignites his red lightsaber on an Imperial bridge,
+claiming victory over the Rebel forces; combat stays frozen during the scene.
+**New game** starts a fresh campaign at Cadet while preserving lifetime kills,
+best score, medals, and honors; failed patrols retain campaign progress.
+The service record offers a replay after the first victory; reduced-motion settings
+show the final pose, and Escape dismisses the scene without starting a new game.
 
 ## Medals — kills in one run
 

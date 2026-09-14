@@ -1,13 +1,15 @@
 import * as THREE from 'three';
 import { renderer, scene, player, camera, updateStars } from './world.js';
 import { state } from './state.js';
-import { updateGame } from './game.js';
+import { updateGame, start, winGame } from './game.js';
 import { spawnEnemy } from './enemies.js';
 import { bindKeyboard } from './keyboard.js';
 import { registerWebMCP } from './webmcp.js';
 import { $, updateHud } from './ui.js';
 import { bindTouch } from './touch.js';
 import { bindCareer } from './career-ui.js';
+import { getCareer } from './career.js';
+import { victory, bindVictory, renderVictory } from './victory.js';
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -15,6 +17,8 @@ updateHud(state);
 bindKeyboard();
 bindTouch();
 bindCareer();
+bindVictory(start);
+if (getCareer().campaignKills === 250) winGame();
 registerWebMCP().catch((error) => console.warn('WebMCP registration failed:', error));
 spawnEnemy(1, 3, -48);
 spawnEnemy(9, 4, -70);
@@ -24,10 +28,11 @@ const target = new THREE.Vector3();
 let previousTime = 0;
 
 function animate(time) {
-  if (state.mode !== 'playing' && time - previousTime < 50) return;
+  if (state.mode !== 'playing' && !victory.active && time - previousTime < 50) return;
   const dt = Math.min((time - previousTime) / 1000 || 0, 0.05);
   previousTime = time;
   if (state.mode === 'playing') updateGame(dt);
+  if (renderVictory(renderer, dt, reducedMotion.matches)) return;
   if (state.mode === 'ready' && !reducedMotion.matches) {
     player.position.y = -0.8 + Math.sin(time * 0.0006) * 0.2;
     player.rotation.z = -0.12 + Math.sin(time * 0.0004) * 0.035;

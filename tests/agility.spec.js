@@ -6,6 +6,7 @@ test('keyboard flight is fast, reverses immediately, and stops without camera dr
   await openGame(page);
   await page.clock.pauseAt(new Date(Date.now() + 100));
   await callTool(page, 'start_game');
+  await page.clock.runFor(64); // Settle active frames after the slower intro cadence.
   await page.keyboard.down('d');
   await page.clock.runFor(120);
   await page.keyboard.up('d');
