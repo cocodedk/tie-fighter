@@ -2,6 +2,7 @@
 @import './layout.css';
 @import './controls.css';
 @import './effects.css';
+@import './career.css';
 
 :root {
   color-scheme: dark;

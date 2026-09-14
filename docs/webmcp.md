@@ -6,6 +6,8 @@ Five native tools are exposed through `document.modelContext`:
 - `get_game_state`: mode, score, `bestScore`, `health`, `maxHealth`, escapes,
   positions, bounds, and active projectiles; `enemyShots` includes positions and
   fixed velocities, and `invulnerableSeconds` reports protection after a hit.
+  `career` includes lifetime `kills`, `bestRun`, `rank`, `nextRank`, and medals/honors
+  with kill thresholds and `earned` flags; restarting preserves this record.
   `killsUntilRepair` counts down to a full hull repair every five kills.
 - `start_game`: start or reset a run.
 - `pause_game` / `resume_game`: control the current run.

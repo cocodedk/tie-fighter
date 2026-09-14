@@ -7,12 +7,14 @@ import { bindKeyboard } from './keyboard.js';
 import { registerWebMCP } from './webmcp.js';
 import { $, updateHud } from './ui.js';
 import { bindTouch } from './touch.js';
+import { bindCareer } from './career-ui.js';
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 updateHud(state);
 bindKeyboard();
 bindTouch();
+bindCareer();
 registerWebMCP().catch((error) => console.warn('WebMCP registration failed:', error));
 spawnEnemy(1, 3, -48);
 spawnEnemy(9, 4, -70);

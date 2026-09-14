@@ -6,6 +6,7 @@ import { updateFlight } from './flight.js';
 import { updateCombat } from './combat.js';
 import { finishControl } from './agent-control.js';
 import { updateEnemyFire } from './enemy-fire.js';
+import { clearAwards } from './career-ui.js';
 
 const previousPlayer = player.position.clone();
 
@@ -17,6 +18,7 @@ function setMode(mode) {
 }
 
 export function start() {
+  clearAwards();
   finishControl('interrupted');
   for (const [objects, key] of [
     [state.enemies, 'ship'], [state.shots, 'mesh'], [state.debris, 'mesh'],

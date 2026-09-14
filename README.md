@@ -18,7 +18,9 @@ X-wings, and hold the sector for as long as you can; no account needed.
 - Three hull points, brief protection after a hit, and a visible damage flash.
 - Every five kills fully repair the hull; the HUD counts down to the next repair.
 - Zero hull or three escapes end the run; faster flight responds immediately.
-- Your best score is saved in this browser and shared between both languages.
+- Your best score and pilot career are saved here and shared between both languages.
+- Six ranks, three medals, and three honors reward career and single-run kills.
+- Open **Service record** before flying, while paused, or after a run to see progress.
 - Native Chrome WebMCP tools for inspecting and controlling the game.
 
 Press Enter or select **Launch Fighter** to start; use WASD or arrow keys to move
@@ -47,6 +49,8 @@ Open the local URL printed by Vite.
 npm run verify   # lint, file limits, browser tests, production build
 npm run preview  # serve the production build locally
 ```
+
+See the [rank and award plan](docs/progression.md) for every kill threshold.
 
 See [contributing](CONTRIBUTING.md) for checks and hooks, and
 [Chrome WebMCP setup](docs/webmcp.md) for the experimental flag and tool API.
