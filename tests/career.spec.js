@@ -49,6 +49,6 @@ for (const saved of ['broken JSON', '{"kills":2,"bestRun":10}']) {
     await callTool(page, 'start_game');
     expect((await fire(page)).career).toMatchObject({ kills: 1, bestRun: 1 });
     expect(await page.evaluate(() => JSON.parse(localStorage.getItem('tie-fighter.career.v1'))))
-      .toEqual({ kills: 1, bestRun: 1 });
+      .toEqual({ kills: 1, bestRun: 1, campaignKills: 1 });
   });
 }

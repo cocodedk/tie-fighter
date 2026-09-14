@@ -43,10 +43,20 @@
         <button id="service-close" type="button" data-career="close">Close</button></div>
       <p class="service-rank" id="career-rank"></p>
       <div class="service-totals"><span id="career-kills"></span><span id="career-best"></span></div>
+      <p class="service-saved" id="campaign-kills"></p>
       <p id="career-next"></p><progress id="rank-progress" aria-labelledby="career-next" max="1" value="0"></progress>
       <h3 id="medals-title" data-career="medals"></h3><ul class="award-list" id="medals" aria-labelledby="medals-title"></ul>
       <h3 id="honors-title" data-career="honors"></h3><ul class="award-list" id="honors" aria-labelledby="honors-title"></ul>
       <p class="service-saved" data-career="saved"></p>
+      <button id="victory-replay" type="button" hidden data-victory="replay"></button>
+    </dialog>
+    <dialog id="victory-screen" aria-labelledby="victory-title" aria-describedby="victory-claim">
+      <div class="victory-copy">
+        <p class="victory-label" data-victory="achieved"></p>
+        <h2 id="victory-title" data-victory="rank"></h2>
+        <p id="victory-claim" data-victory="claim"></p>
+        <button id="victory-action" type="button" data-victory="newGame"></button>
+      </div>
     </dialog>
     <div id="award-notice" role="status" aria-live="polite" hidden></div>
     <div id="notice" role="status" aria-live="polite"></div>

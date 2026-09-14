@@ -3,6 +3,7 @@
 @import './controls.css';
 @import './effects.css';
 @import './career.css';
+@import './victory.css';
 
 :root {
   color-scheme: dark;

@@ -35,6 +35,12 @@ export function showMode(state) {
     $('start').textContent = paused ? text.resume : text.again;
     $('start-hint').textContent = paused ? text.resumeHint : text.enter;
   }
+  if (mode === 'won') {
+    $('title').textContent = text.wonTitle;
+    $('description').textContent = text.wonDescription;
+    $('start').textContent = text.newGame;
+    $('start-hint').textContent = text.enter;
+  }
 }
 
 export function showEscape(remaining) {
