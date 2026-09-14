@@ -1,5 +1,5 @@
 import { scene, player } from './world.js';
-import { state } from './state.js';
+import { state, maxHealth } from './state.js';
 import { $, updateHud, showMode, updateEffects } from './ui.js';
 import { spawnEnemy, updateEnemies } from './enemies.js';
 import { updateFlight } from './flight.js';
@@ -27,7 +27,7 @@ export function start() {
   }
   Object.assign(state, {
     score: 0, escapes: 0, elapsed: 0, fireCooldown: 0,
-    health: 3, invulnerableTime: 0, damageTime: 0,
+    health: maxHealth, invulnerableTime: 0, damageTime: 0,
     spawnCooldown: 2.5, noticeTime: 0, hitTime: 0,
   });
   $('notice').textContent = '';

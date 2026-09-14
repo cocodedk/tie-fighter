@@ -1,5 +1,6 @@
 import { text, localize } from './i18n.js';
 import { resetTouch } from './touch.js';
+import { maxHealth, killsUntilRepair } from './state.js';
 
 export const $ = (id) => document.getElementById(id);
 localize();
@@ -8,7 +9,8 @@ export function updateHud(state) {
   $('score').textContent = String(state.score).padStart(4, '0');
   $('best-score').textContent = String(state.bestScore).padStart(4, '0');
   $('escapes').innerHTML = `${state.escapes} <small>/ 3</small>`;
-  $('health').textContent = `${state.health} / 3`;
+  $('health').textContent = `${state.health} / ${maxHealth}`;
+  $('repair').textContent = text.repair(killsUntilRepair(state.score));
   $('health').dataset.low = state.health <= 1;
 }
 
@@ -34,6 +36,10 @@ export function showMode(state) {
 
 export function showEscape(remaining) {
   $('notice').textContent = text.escape(remaining);
+}
+
+export function showRepair() {
+  $('notice').textContent = text.repairDone;
 }
 
 export function showDamage(health) {

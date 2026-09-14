@@ -16,7 +16,8 @@ X-wings, and hold the sector for as long as you can; no account needed.
 - Keyboard and touch controls, with English and Persian interfaces.
 - Destroy X-wings for 100 points each; dodge their aimed red lasers.
 - Three hull points, brief protection after a hit, and a visible damage flash.
-- Three hits or three escapes end the run; faster flight responds immediately.
+- Every five kills fully repair the hull; the HUD counts down to the next repair.
+- Zero hull or three escapes end the run; faster flight responds immediately.
 - Your best score is saved in this browser and shared between both languages.
 - Native Chrome WebMCP tools for inspecting and controlling the game.
 

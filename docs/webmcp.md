@@ -6,6 +6,7 @@ Five native tools are exposed through `document.modelContext`:
 - `get_game_state`: mode, score, `bestScore`, `health`, `maxHealth`, escapes,
   positions, bounds, and active projectiles; `enemyShots` includes positions and
   fixed velocities, and `invulnerableSeconds` reports protection after a hit.
+  `killsUntilRepair` counts down to a full hull repair every five kills.
 - `start_game`: start or reset a run.
 - `pause_game` / `resume_game`: control the current run.
 - `control_fighter`: horizontal/vertical input (-1, 0, 1), `fire`, and `duration_ms`

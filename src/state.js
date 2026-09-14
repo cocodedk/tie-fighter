@@ -1,9 +1,13 @@
 import { player } from './world.js';
 import { readBestScore } from './scores.js';
 
+export const maxHealth = 3;
+export const killsPerRepair = 5;
+export const killsUntilRepair = (score) => killsPerRepair - (score / 100) % killsPerRepair;
+
 export const state = {
   mode: 'ready', score: 0, bestScore: readBestScore(), escapes: 0, elapsed: 0,
-  health: 3, invulnerableTime: 0, damageTime: 0,
+  health: maxHealth, invulnerableTime: 0, damageTime: 0,
   fireCooldown: 0, spawnCooldown: 0, noticeTime: 0, hitTime: 0,
   keys: new Set(), enemies: [], shots: [], enemyShots: [], debris: [], agent: null,
 };
@@ -17,7 +21,8 @@ export function getState() {
     score: state.score,
     bestScore: state.bestScore,
     health: state.health,
-    maxHealth: 3,
+    maxHealth,
+    killsUntilRepair: killsUntilRepair(state.score),
     invulnerableSeconds: state.invulnerableTime,
     escapes: state.escapes,
     escapeLimit: 3,
