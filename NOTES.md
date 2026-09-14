@@ -1,3 +1,18 @@
+## 2026-09-14 (Codex) — pilot progression ready for publication
+
+**State:** Implementation and independent review complete; publication gates pending.
+The 25-test suite passed before the final responsive adjustment; all eight final
+production language/viewport checks passed using `/tmp/tie-career-check.mjs`.
+
+**Tried:** Browser measurements exposed short-screen overlaps that source review
+missed; screenshots are in `/tmp/tie-career/`.
+
+**Lesson:** Check both language fonts on short portrait and landscape screens;
+CSS import order can override responsive typography even when the rules exist.
+
+**Next:** Run the mandatory push gate, merge a green PR, and verify the deployed
+career progression and production assets.
+
 ## 2026-09-14 (Codex) — dogfight update ready for publication
 
 **State:** Gameplay changes and independent review complete through `cca1140`;

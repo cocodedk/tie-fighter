@@ -1,5 +1,6 @@
 import { player } from './world.js';
 import { readBestScore } from './scores.js';
+import { getCareer } from './career.js';
 
 export const maxHealth = 3;
 export const killsPerRepair = 5;
@@ -20,6 +21,7 @@ export function getState() {
     mode: state.mode,
     score: state.score,
     bestScore: state.bestScore,
+    career: getCareer(),
     health: state.health,
     maxHealth,
     killsUntilRepair: killsUntilRepair(state.score),

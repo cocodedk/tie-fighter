@@ -4,6 +4,8 @@ import { scene, player } from './world.js';
 import { state, maxHealth, killsPerRepair } from './state.js';
 import { updateHud, showRepair } from './ui.js';
 import { saveBestScore } from './scores.js';
+import { recordKill } from './career.js';
+import { showAwards } from './career-ui.js';
 
 const segment = new THREE.Line3();
 const closest = new THREE.Vector3();
@@ -44,6 +46,7 @@ export function updateCombat(dt) {
         scene.remove(enemy.ship);
         enemies.splice(j, 1);
         state.score += 100;
+        showAwards(recordKill(state.score / 100));
         if (state.score % (killsPerRepair * 100) === 0) {
           state.health = maxHealth;
           state.damageTime = 0;

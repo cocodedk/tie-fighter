@@ -1,11 +1,13 @@
 import { text, localize } from './i18n.js';
 import { resetTouch } from './touch.js';
 import { maxHealth, killsUntilRepair } from './state.js';
+import { updateCareerHud, updateAwards } from './career-ui.js';
 
 export const $ = (id) => document.getElementById(id);
 localize();
 
 export function updateHud(state) {
+  updateCareerHud();
   $('score').textContent = String(state.score).padStart(4, '0');
   $('best-score').textContent = String(state.bestScore).padStart(4, '0');
   $('escapes').innerHTML = `${state.escapes} <small>/ 3</small>`;
@@ -19,6 +21,7 @@ export function showMode(state) {
   const playing = mode === 'playing';
   document.body.classList.toggle('playing', playing);
   $('overlay').hidden = playing;
+  if (playing) $('service-record').close();
   $('pause').hidden = !playing;
   document.querySelector('.touch-controls').hidden = !playing;
   resetTouch();
@@ -47,6 +50,7 @@ export function showDamage(health) {
 }
 
 export function updateEffects(state, dt) {
+  updateAwards(dt);
   state.damageTime = Math.max(0, state.damageTime - dt);
   $('damage').style.opacity = Math.min(1, state.damageTime / 0.2);
   state.noticeTime = Math.max(0, state.noticeTime - dt);

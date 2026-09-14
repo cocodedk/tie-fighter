@@ -14,7 +14,7 @@
     <canvas id="game" aria-label="TIE fighter flight game" data-label="canvas"></canvas>
     <div class="vignette" aria-hidden="true"></div>
     <header class="hud">
-      <div class="identity"><span class="insignia" aria-hidden="true">✳</span><div><strong data-text="name">تای فایتر</strong><span class="subtitle" id="repair">۵ شکار تا ترمیم کامل</span></div></div>
+      <div class="identity"><span class="insignia" aria-hidden="true">✳</span><div><strong data-text="name">تای فایتر</strong><span class="subtitle" id="repair">۵ شکار تا ترمیم کامل</span><span id="pilot-rank">دانشجو</span></div></div>
       <div class="stats">
         <div><span data-text="score">امتیاز</span><strong id="score">0000</strong>
           <span class="best-score"><span data-text="best">رکورد</span> <b id="best-score">0000</b></span></div>
@@ -30,11 +30,25 @@
       <section class="intro" aria-labelledby="title">
         <h1 id="title" data-text="readyTitle">بازی تای فایتر</h1>
         <p class="description" id="description" data-text="readyDescription">ایکس‌وینگ‌ها را شکار کن و از لیزرهای قرمزشان جاخالی بده. با صفر شدن سلامت بدنه یا فرار سه دشمن، گشت تمام می‌شود.</p>
+        <div class="launch-actions">
         <button id="start" type="button" disabled data-text="launch">شروع پرواز</button>
+          <button id="service-open" type="button" disabled data-career="service">پروندهٔ خلبان</button>
+        </div>
         <p class="start-hint" id="start-hint" data-text="enter">یا Enter را بزن</p>
         <p class="touch-hint" data-text="touchHint">با جهت‌ها حرکت کن و دکمهٔ شلیک را نگه دار.</p>
       </section>
     </main>
+    <dialog id="service-record" aria-labelledby="service-title">
+      <div class="service-heading"><h2 id="service-title" data-career="service">پروندهٔ خلبان</h2>
+        <button id="service-close" type="button" data-career="close">بستن</button></div>
+      <p class="service-rank" id="career-rank"></p>
+      <div class="service-totals"><span id="career-kills"></span><span id="career-best"></span></div>
+      <p id="career-next"></p><progress id="rank-progress" aria-labelledby="career-next" max="1" value="0"></progress>
+      <h3 id="medals-title" data-career="medals"></h3><ul class="award-list" id="medals" aria-labelledby="medals-title"></ul>
+      <h3 id="honors-title" data-career="honors"></h3><ul class="award-list" id="honors" aria-labelledby="honors-title"></ul>
+      <p class="service-saved" data-career="saved"></p>
+    </dialog>
+    <div id="award-notice" role="status" aria-live="polite" hidden></div>
     <div id="notice" role="status" aria-live="polite"></div>
     <nav class="touch-controls" aria-label="کنترل پرواز" hidden>
       <div class="direction-pad">

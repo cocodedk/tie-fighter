@@ -55,6 +55,7 @@ for (const failure of ['blocked access', 'full storage']) {
     expect((await fire(page)).score).toBe(100);
     await callTool(page, 'start_game');
     await expectBest(page, 100);
+    expect((await callTool(page, 'get_game_state')).career).toMatchObject({ kills: 1, bestRun: 1 });
     expect(errors).toEqual([]);
   });
 }
