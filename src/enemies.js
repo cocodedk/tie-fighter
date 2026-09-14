@@ -11,7 +11,7 @@ export function spawnEnemy(x = (Math.random() - 0.5) * 21,
   scene.add(ship);
   state.enemies.push({
     ship, baseX: x, baseY: y, phase: Math.random() * Math.PI * 2,
-    previous: ship.position.clone(),
+    previous: ship.position.clone(), fireCooldown: 1.4 + Math.random() * 0.8,
   });
 }
 

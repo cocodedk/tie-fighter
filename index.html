@@ -18,16 +18,18 @@
       <div class="stats">
         <div><span data-text="score">Score</span><strong id="score">0000</strong>
           <span class="best-score"><span data-text="best">Best</span> <b id="best-score">0000</b></span></div>
-        <div><span data-text="escapes">Escapes</span><strong id="escapes">0 <small>/ 3</small></strong></div>
+        <div><span data-text="escapes">Escapes</span><strong id="escapes">0 <small>/ 3</small></strong>
+          <span class="best-score"><span data-text="hull">Hull</span> <b id="health" aria-live="polite">3 / 3</b></span></div>
         <button id="pause" type="button" data-text="pause" hidden>Pause</button>
       </div>
     </header>
     <div id="reticle" aria-hidden="true"><span></span></div>
     <div id="hit" aria-hidden="true">×</div>
+    <div id="damage" aria-hidden="true"></div>
     <main id="overlay">
       <section class="intro" aria-labelledby="title">
         <h1 id="title" data-text="readyTitle">TIE Fighter game</h1>
-        <p class="description" id="description" data-text="readyDescription">Pilot your TIE fighter. Take down the X-wings. Three escapes, and the sector is lost.</p>
+        <p class="description" id="description" data-text="readyDescription">Hunt the X-wings. Dodge their red lasers. Three hits or three escapes end your patrol.</p>
         <button id="start" type="button" disabled data-text="launch">LAUNCH FIGHTER</button>
         <p class="start-hint" id="start-hint" data-text="enter">Or press Enter</p>
         <p class="touch-hint" data-text="touchHint">Use the directions to fly. Hold Fire to shoot.</p>

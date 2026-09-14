@@ -37,7 +37,12 @@ test('three escapes end the run and restart clears the previous run', async ({ p
   await page.clock.install();
   await openGame(page);
   await page.keyboard.press('Enter');
-  await page.clock.runFor(19000);
+  for (let i = 0; i < 24; i++) {
+    const key = ['ArrowRight', 'ArrowUp', 'ArrowLeft', 'ArrowDown'][i % 4];
+    await page.keyboard.down(key);
+    await page.clock.runFor(800);
+    await page.keyboard.up(key);
+  }
   await expectMode(page, 'over');
   const lost = await callTool(page, 'get_game_state');
   expect(lost.escapes).toBe(3);

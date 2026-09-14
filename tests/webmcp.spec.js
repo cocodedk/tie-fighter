@@ -8,19 +8,21 @@ test('discovers five native WebMCP tools and starts the actual game', async ({ p
     (await document.modelContext.getTools()).map((tool) => tool.name));
   expect(names).toEqual(['control_fighter', 'get_game_state', 'pause_game', 'resume_game', 'start_game']);
   expect((await callTool(page, 'get_game_state')).mode).toBe('ready');
+  await expect(page.locator('#reticle')).toBeHidden();
   const state = await callTool(page, 'start_game');
   expect(state).toMatchObject({ mode: 'playing', score: 0, escapes: 0 });
   expect(state.enemies).toHaveLength(1);
   await expect(page.locator('#overlay')).toBeHidden();
+  await expect(page.locator('#reticle')).toBeVisible();
 });
 
 test('native flight uses normalized movement, releases input, and respects bounds', async ({ page }) => {
   await callTool(page, 'start_game');
   const moved = await callTool(page, 'control_fighter', {
-    horizontal: 1, vertical: 1, duration_ms: 500,
+    horizontal: 1, vertical: 1, duration_ms: 250,
   });
   expect(moved.status).toBe('completed');
-  expect(Math.hypot(moved.player.x, moved.player.y + 1)).toBeCloseTo(7, 4);
+  expect(Math.hypot(moved.player.x, moved.player.y + 1)).toBeCloseTo(6, 4);
   expect(moved.controlActive).toBe(false);
   const bounded = await callTool(page, 'control_fighter', { horizontal: 1, duration_ms: 1000 });
   expect(bounded.player.x).toBe(12);
@@ -42,6 +44,7 @@ test('pause interrupts native input, resumes, and rejects invalid movement', asy
   await expect.poll(async () => (await callTool(page, 'get_game_state')).controlActive).toBe(true);
   const paused = await callTool(page, 'pause_game');
   expect(paused.mode).toBe('paused');
+  await expect(page.locator('#reticle')).toBeHidden();
   expect((await pending).status).toBe('interrupted');
   expect((await callTool(page, 'resume_game')).mode).toBe('playing');
   await expect(callTool(page, 'control_fighter', { horizontal: 10 })).rejects.toThrow();

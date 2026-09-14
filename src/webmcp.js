@@ -10,8 +10,8 @@ export async function registerWebMCP() {
   const tools = [
     {
       name: 'get_game_state',
-      description: 'Read mode, score, saved best score, escapes, player and X-wing world positions, '
-        + 'flight bounds, and active shots. X is right, Y is up; lasers travel toward negative Z.',
+      description: 'Read mode, score, best score, hull health, escapes, incoming laser positions and velocities, '
+        + 'ship positions, flight bounds, and active shots. Player lasers travel toward negative Z; enemy lasers toward positive Z.',
       inputSchema: emptyInput,
       annotations: { readOnlyHint: true },
       execute: () => getState(),

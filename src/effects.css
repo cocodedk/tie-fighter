@@ -1,3 +1,5 @@
+#damage { position: fixed; inset: 0; box-shadow: inset 0 0 90px #ff354f99; pointer-events: none; opacity: 0; }
+#health[data-low='true'] { color: #ff7a87; }
 #reticle { display: none; position: fixed; width: 36px; height: 36px; transform: translate(-50%, -50%); pointer-events: none; filter: drop-shadow(0 0 3px #000); }
 #reticle::before, #reticle::after { content: ''; position: absolute; background: #ff5555; }
 #reticle::before { top: 17px; left: 0; width: 13px; height: 2px; box-shadow: 23px 0 #ff5555; }
