@@ -1,0 +1,31 @@
+#ship-select[hidden] { display: none; }
+#ship-select { border: 0; padding: 0; margin: 0 0 22px; display: flex; gap: 8px; flex-wrap: wrap; }
+#ship-select legend { color: #b8c5cc; font-size: 14px; padding: 0; margin-bottom: 9px; }
+#ship-select label { display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 10px 14px; border: 1px solid #647783; background: #080c13cc; cursor: pointer; }
+#ship-select label:has(:checked) { border-color: #d5ae78; color: #f0d4a7; background: #342b20e6; }
+#ship-select label:has(:focus-visible) { outline: 2px solid #edf0ee; outline-offset: 3px; }
+#ship-select input { accent-color: #d5ae78; margin: 0; width: 15px; height: 15px; }
+#ship-select span { white-space: nowrap; }
+@media (max-width: 767px) {
+  #overlay { padding-top: 120px; }
+  #overlay h1 { font-size: 48px; max-width: none; }
+  html[dir='rtl'] #overlay h1 { font-size: 36px; }
+  #ship-select { gap: 6px; }
+  #ship-select label { padding-inline: 10px; gap: 6px; font-size: 14px; }
+  #overlay .description { font-size: 14px; margin: 14px 0; }
+}
+@media (min-width: 768px) and (min-height: 551px) {
+  #overlay { padding-block: 172px 96px; }
+  #overlay h1 { font-size: clamp(64px, 8vw, 110px); }
+  html[dir='rtl'] #overlay h1 { font-size: clamp(46px, 6vw, 80px); }
+}
+@media (orientation: landscape) and (max-height: 550px) {
+  #overlay .intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 1fr); gap: 8px 24px; }
+  #overlay h1 { grid-column: 1; font-size: 40px; }
+  html[dir='rtl'] #overlay h1 { font-size: 30px; }
+  #overlay .description { grid-column: 1; grid-row: 2; margin: 0; }
+  #ship-select { grid-column: 2; grid-row: 1; margin: 0; align-content: start; gap: 6px; }
+  #ship-select legend { margin-bottom: 4px; }
+  #ship-select label { padding-inline: 8px; font-size: 14px; gap: 6px; }
+  #overlay .launch-actions { grid-column: 2; grid-row: 2; align-content: start; }
+}

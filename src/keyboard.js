@@ -13,6 +13,8 @@ export function bindKeyboard() {
   window.addEventListener('keydown', (event) => {
     if (document.querySelector('dialog[open]')) return;
     if (!codes.includes(event.code)) return;
+    if (event.target.matches?.('input, select, textarea')
+      && !(event.code === 'Enter' && event.target.closest('#ship-select'))) return;
     if (event.target.closest?.('a, button') && ['Enter', 'Space'].includes(event.code)) return;
     event.preventDefault();
     finishControl('interrupted');

@@ -22,7 +22,7 @@ export const text = fa ? {
   wonDescription: 'The Rebel forces are defeated. Start a new game to rise from Cadet again.',
   name: 'TIE Fighter', score: 'Score', best: 'Best', hull: 'Hull', escapes: 'Escapes',
   readyTitle: 'TIE Fighter game', readyDescription: 'Hunt X-wings and dodge their red lasers. The patrol ends at zero hull or three escapes.',
-  launch: 'LAUNCH FIGHTER', resume: 'RESUME FLIGHT', again: 'FLY AGAIN', pause: 'Pause',
+  launch: 'Launch', resume: 'RESUME FLIGHT', again: 'FLY AGAIN', pause: 'Pause',
   pausedTitle: 'Patrol paused.', pausedDescription: 'Ready when you are, pilot.', overTitle: 'Sector lost.',
   debrief: (score) => `${score / 100} X-wings destroyed. ${score} points. Take another flight.`,
   ready: 'Awaiting pilot', playing: 'Patrol active', paused: 'Patrol paused', over: 'Sector lost',

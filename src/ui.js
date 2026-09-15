@@ -1,3 +1,4 @@
+import { updateShipSelector } from './ship-select.js';
 import { text, localize } from './i18n.js';
 import { resetTouch } from './touch.js';
 import { maxHealth, killsUntilRepair } from './state.js';
@@ -18,6 +19,7 @@ export function updateHud(state) {
 
 export function showMode(state) {
   const { mode, score } = state;
+  updateShipSelector(mode);
   const playing = mode === 'playing';
   document.body.classList.toggle('playing', playing);
   $('overlay').hidden = playing;

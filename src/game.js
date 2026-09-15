@@ -8,6 +8,7 @@ import { finishControl } from './agent-control.js';
 import { updateEnemyFire } from './enemy-fire.js';
 import { clearAwards } from './career-ui.js';
 import { getCareer, restartCampaign } from './career.js';
+import { selectShip } from './player.js';
 import { showVictory, closeVictory } from './victory.js';
 
 const previousPlayer = player.position.clone();
@@ -19,7 +20,8 @@ function setMode(mode) {
   showMode(state);
 }
 
-export function start() {
+export function start(shipType = player.userData.shipType) {
+  selectShip(shipType);
   closeVictory();
   if (getCareer().campaignKills === 250) restartCampaign();
   clearAwards();

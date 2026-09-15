@@ -20,6 +20,7 @@ const position = ({ x, y, z }) => ({ x, y, z });
 export function getState() {
   return {
     mode: state.mode,
+    shipType: player.userData.shipType,
     score: state.score,
     bestScore: state.bestScore,
     career: getCareer(),

@@ -11,10 +11,13 @@ import { bindCareer } from './career-ui.js';
 import { getCareer } from './career.js';
 import { victory, bindVictory, renderVictory } from './victory.js';
 
+import { bindShipSelector } from './ship-select.js';
+
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 updateHud(state);
 bindKeyboard();
+bindShipSelector();
 bindTouch();
 bindCareer();
 bindVictory(start);

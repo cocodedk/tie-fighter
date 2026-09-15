@@ -29,9 +29,10 @@ test('Darth Vader ends the game and New game restarts at Cadet while preserving 
   await page.locator('#victory-replay').click();
   await expect(page.locator('#victory-action')).toHaveText('Back');
   await page.locator('#victory-action').click();
+  await page.locator('input[value=interceptor]').check();
   await page.locator('#start').click();
   const fresh = await callTool(page, 'get_game_state');
-  expect(fresh).toMatchObject({ mode: 'playing', score: 0, bestScore: 2400, victory: { active: false } });
+  expect(fresh).toMatchObject({ mode: 'playing', shipType: 'interceptor', score: 0, bestScore: 2400, victory: { active: false } });
   expect(fresh.career).toMatchObject({ kills: 250, bestRun: 24, campaignKills: 0, rank: { id: 'cadet' } });
   expect(fresh.career.medals).toEqual(won.career.medals);
   expect(fresh.career.honors).toEqual(won.career.honors);
