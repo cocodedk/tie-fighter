@@ -44,9 +44,14 @@ test('reduced motion presents a stable victory pose and allows a fresh game', as
   const urls = gameModuleUrls(page, ['victory']);
   const pose = () => page.evaluate(async (url) => {
     const { victoryScene } = await import(url);
-    return [victoryScene.vader.arms[1].rotation.z, victoryScene.vader.cape.rotation.x];
+    return { arm: victoryScene.vader.arms[1].rotation.z, cape: victoryScene.vader.cape.rotation.x,
+      battle: victoryScene.battle.duels.map((duel) => ({ ...duel.getState(),
+        hunter: duel.hunter.matrixWorld.elements, rebel: duel.rebel.visible,
+        explosion: duel.explosion.group.visible, bolts: duel.bolts.map((bolt) => bolt.visible) })) };
   }, urls.victory);
   const before = await pose();
+  expect(before.battle.every((duel) => duel.phase === 'destroyed' && !duel.rebel &&
+    !duel.explosion && duel.bolts.every((visible) => !visible))).toBe(true);
   await page.waitForTimeout(200);
   expect(await pose()).toEqual(before);
   await page.locator('#victory-action').click();

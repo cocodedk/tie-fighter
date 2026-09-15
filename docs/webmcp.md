@@ -9,6 +9,8 @@ Five native tools are exposed through `document.modelContext`:
   `career` includes lifetime `kills`, `campaignKills`, `bestRun`, `rank`, `nextRank`, and medals/honors
   with kill thresholds and `earned` flags; new games retain earned awards.
   At Darth Vader the mode becomes `won`; `victory` reports animation state,
+  with `victory.battle` listing each `attacker`, `target`, `activeLasers`, and `phase`
+  (`tracking`, `firing`, or `destroyed`); the list is empty when the scene is closed,
   and `start_game` begins a new campaign while `resume_game` cannot resume a win.
   `killsUntilRepair` counts down to a full hull repair every five kills.
 - `start_game`: start or reset a run; optionally pass `shipType: "fighter"` or

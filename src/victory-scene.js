@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { box, mesh } from './parts.js';
 import { makeVader } from './vader.js';
-import { makeXWing } from './xwing.js';
+import { createVictoryBattle } from './victory-battle.js';
 
 export function createVictoryScene() {
   const scene = new THREE.Scene();
@@ -33,13 +33,7 @@ export function createVictoryScene() {
     const y = ((i * 23) % 71) / 71 * 15;
     mesh(scene, new THREE.TetrahedronGeometry(.035), new THREE.MeshBasicMaterial({ color: 0x91a1bf }), x, y, -22);
   }
-  const wrecks = [-1, 1].map((side) => {
-    const ship = makeXWing();
-    ship.scale.setScalar(.35);
-    ship.position.set(side * 4.3, 2.5 + side, -10);
-    scene.add(ship);
-    return ship;
-  });
+  const battle = createVictoryBattle(scene);
   function pose(time, width, height, rtl) {
     const wide = width > height * 1.15;
     camera.aspect = width / height;
@@ -48,9 +42,13 @@ export function createVictoryScene() {
     camera.updateProjectionMatrix();
     const span = 2 * camera.position.z * Math.tan(THREE.MathUtils.degToRad(19));
     vader.actor.position.x = wide ? (rtl ? 1 : -1) * span * camera.aspect * .23 : 0;
-    vader.actor.position.y = wide ? 0 : .35;
+    const compact = !wide || height <= 450;
+    const actorScale = compact ? .72 : 1;
+    vader.actor.scale.setScalar(actorScale);
+    vader.actor.position.y = compact ? -.35 : 0;
     platform.position.x = vader.actor.position.x;
-    platform.position.y = vader.actor.position.y - .6;
+    platform.scale.setScalar(actorScale);
+    platform.position.y = vader.actor.position.y - .6 * actorScale;
     const gesture = THREE.MathUtils.smoothstep(time, .6, 2.8);
     vader.actor.rotation.y = .25 - gesture * .32;
     vader.arms[1].rotation.z = gesture * 1.1;
@@ -60,10 +58,7 @@ export function createVictoryScene() {
     vader.head.rotation.y = -gesture * .08;
     vader.cape.rotation.x = time < 5 ? Math.sin(time * 1.7) * .025 : 0;
     vader.blade.scale.y = THREE.MathUtils.smoothstep(time, .1, 1);
-    wrecks.forEach((ship, i) => {
-      ship.position.y = 2.5 + (i ? 1 : -1) - Math.min(time, 5) * .28;
-      ship.rotation.set(.3 + time * .1, .5, (i ? 1 : -1) * (.4 + Math.min(time, 5) * .25));
-    });
+    battle.pose(time, camera, width, height, rtl);
   }
-  return { scene, camera, vader, pose };
+  return { scene, camera, vader, battle, pose };
 }

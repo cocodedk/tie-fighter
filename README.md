@@ -24,6 +24,7 @@ X-wings, and hold the sector for as long as you can; no account needed.
 - Your best score and pilot career are saved here and shared between both languages.
 - Six ranks, three medals, and three honors reward campaign and career kills.
 - Reach Darth Vader at 250 campaign kills to win with a low-poly victory animation.
+- A TIE Fighter and Interceptor pursue and destroy an X-wing and A-wing behind Vader.
 - New game restarts at Cadet and preserves your best score and earned awards.
 - Open **Service record** before flying, while paused, or after a run to see progress.
 - Native Chrome WebMCP tools for inspecting and controlling the game.
