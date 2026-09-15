@@ -9,6 +9,8 @@ Five native tools are exposed through `document.modelContext`:
   `career` includes lifetime `kills`, `campaignKills`, `bestRun`, `rank`, `nextRank`, and medals/honors
   with kill thresholds and `earned` flags; new games retain earned awards.
   At Darth Vader the mode becomes `won`; `victory` reports animation state,
+  including `cycleSeconds` within the eight-second loop; `complete` stays true after
+  the first victory gesture finishes, while reduced motion holds the final pose,
   with `victory.battle` listing each `attacker`, `target`, `activeLasers`, and `phase`
   (`tracking`, `firing`, or `destroyed`); the list is empty when the scene is closed,
   and `start_game` begins a new campaign while `resume_game` cannot resume a win.

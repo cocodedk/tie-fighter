@@ -10,12 +10,13 @@ export function makeVictoryDuel(scene, hunter, rebel, attacker, target, hitAt) {
   const bolts = hunter.userData.muzzles.map(() => mesh(scene, boltGeometry, laserMaterial));
   scene.add(hunter, rebel, explosion.group);
   let phase = 'tracking';
-  function pose(time, hunterPosition, rebelPosition, size, pixel) {
+  function pose(time, hunterPosition, rebelPosition, size, pixel, departure = 0) {
     phase = time >= hitAt ? 'destroyed' : time >= hitAt - .9 ? 'firing' : 'tracking';
     hunter.position.copy(hunterPosition);
     rebel.position.copy(rebelPosition);
     hunter.scale.setScalar(size); rebel.scale.setScalar(size * (target === 'awing' ? 1.35 : 1));
-    hunter.lookAt(rebelPosition); hunter.rotateY(Math.PI);
+    const headingTarget = rebelPosition.clone().lerp(hunterPosition.clone().add(new THREE.Vector3(0, 0, -20)), departure);
+    hunter.lookAt(headingTarget); hunter.rotateY(Math.PI);
     hunter.rotateZ(attacker === 'fighter' ? -.18 : .2);
     const heading = rebelPosition.clone().sub(hunterPosition);
     rebel.lookAt(rebelPosition.clone().add(heading));

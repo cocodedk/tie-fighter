@@ -1,4 +1,4 @@
-import { createVictoryScene } from './victory-scene.js';
+import { createVictoryScene, victoryLoopSeconds } from './victory-scene.js';
 import { language } from './i18n.js';
 
 const text = language === 'fa' ? {
@@ -14,7 +14,7 @@ export let victoryScene;
 
 export function getVictory() {
   return { active: victory.active, elapsedSeconds: victory.elapsed,
-    complete: victory.elapsed >= 5, finale: victory.finale,
+    complete: victory.elapsed >= 5, finale: victory.finale, cycleSeconds: victory.elapsed % victoryLoopSeconds,
     battle: victory.active ? victoryScene.battle.getState() : [] };
 }
 
@@ -51,8 +51,8 @@ export function bindVictory(startNewGame) {
 
 export function renderVictory(renderer, dt, reducedMotion) {
   if (!victory.active) return false;
-  if (!document.hidden) victory.elapsed = reducedMotion ? 5 : Math.min(5, victory.elapsed + dt);
-  victoryScene.pose(victory.elapsed, window.innerWidth, window.innerHeight, language === 'fa');
+  if (!document.hidden) victory.elapsed = reducedMotion ? 5 : victory.elapsed + dt;
+  victoryScene.pose(victory.elapsed % victoryLoopSeconds, window.innerWidth, window.innerHeight, language === 'fa');
   renderer.render(victoryScene.scene, victoryScene.camera);
   return true;
 }

@@ -19,7 +19,8 @@ Darth Vader raises his arm and ignites his red lightsaber on an Imperial bridge,
 claiming victory over the Rebel forces; gameplay stays frozen during the scene.
 Behind him, a TIE Fighter pursues and destroys an X-wing with two cannons, then a
 four-cannon Interceptor destroys an A-wing; green bolts end in low-poly explosions.
-This five-second background battle adds no kills or score and restarts on replay.
+The eight-second scene loops: Vader lowers his arm, the ships fly into the distance,
+and the next pass begins without a visible reset; background kills add no score.
 **New game** starts a fresh campaign at Cadet while preserving lifetime kills,
 best score, medals, and honors; failed patrols retain campaign progress.
 The service record offers a replay after the first victory; reduced-motion settings

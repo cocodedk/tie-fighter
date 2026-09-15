@@ -1,3 +1,10 @@
+## 2026-09-15 (Codex) — smooth victory loop
+
+**State:** Eight-second loop implemented; previous release is `a85e64c`.
+**Tried:** Boundary/RTL tests and `/tmp/tie-loop-check.mjs`; images in `/tmp/tie-loop/`.
+**Lesson:** Match Vader’s boundary pose and hide ship repositioning beyond the fog.
+**Next:** Complete independent review, the strict 41-test gate, and live publication checks.
+
 ## 2026-09-15 (Codex) — Vader background battle ready for publication
 
 **State:** Independent source and test review approved; two scripted pursuits

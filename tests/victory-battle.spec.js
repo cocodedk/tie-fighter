@@ -49,14 +49,26 @@ test('the low-poly victory battle fires mounted cannons and destroys each Rebel 
   for (const key of ['score', 'career', 'health', 'enemies', 'enemyShots', 'elapsedSeconds']) expect(after[key]).toEqual(before[key]);
 });
 
-test('native WebMCP observes both victory kills and replay resets the pursuit', async ({ page }) => {
+test('native WebMCP observes repeating victory battles without scoring and replay resets the pursuit', async ({ page }) => {
   await seed(page);
   await openGame(page);
+  const initial = await callTool(page, 'get_game_state');
   const battle = async () => (await callTool(page, 'get_game_state')).victory.battle;
   await expect.poll(async () => (await battle())[0].phase, { intervals: [50] }).toBe('firing');
   await expect.poll(async () => (await battle())[1].phase, { intervals: [50] }).toBe('firing');
   await expect.poll(async () => (await callTool(page, 'get_game_state')).victory.complete).toBe(true);
   expect((await battle()).map((duel) => duel.phase)).toEqual(['destroyed', 'destroyed']);
+  await expect.poll(async () => {
+    const { victory } = await callTool(page, 'get_game_state');
+    return victory.elapsedSeconds >= 8 && victory.cycleSeconds < 1;
+  }, { intervals: [50] }).toBe(true);
+  expect((await battle()).map((duel) => duel.phase)).toEqual(['tracking', 'tracking']);
+  await expect.poll(async () => (await battle())[0].phase, { intervals: [50] }).toBe('firing');
+  await expect.poll(async () => (await battle())[1].phase, { intervals: [50] }).toBe('firing');
+  await expect.poll(async () => (await battle())[1].phase, { intervals: [50] }).toBe('destroyed');
+  const repeated = await callTool(page, 'get_game_state');
+  expect(repeated.victory.complete).toBe(true);
+  for (const key of ['mode', 'score', 'career', 'health', 'enemies', 'enemyShots', 'elapsedSeconds']) expect(repeated[key]).toEqual(initial[key]);
   await page.keyboard.press('Escape');
   expect(await battle()).toEqual([]);
   await page.locator('#service-open').click();
@@ -65,4 +77,7 @@ test('native WebMCP observes both victory kills and replay resets the pursuit', 
   const { victory } = gameModuleUrls(page, ['victory']);
   expect(await page.evaluate(async (url) => (await import(url)).victoryScene.battle.duels
     .every((duel) => duel.hunter.visible && duel.rebel.visible && !duel.explosion.group.visible), victory)).toBe(true);
+  const fresh = await callTool(page, 'start_game');
+  expect(fresh).toMatchObject({ mode: 'playing', victory: { active: false }, career: { campaignKills: 0, rank: { id: 'cadet' } } });
+  expect(fresh.career.honors).toEqual(initial.career.honors);
 });

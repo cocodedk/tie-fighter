@@ -25,14 +25,16 @@ export function createVictoryBattle(scene) {
       const ray = new THREE.Vector3(x, y, .5).unproject(camera).sub(camera.position);
       return camera.position.clone().addScaledVector(ray, (z - camera.position.z) / ray.z);
     };
+    const departure = THREE.MathUtils.smoothstep(time, 5, 8);
+    const distance = (1 - THREE.MathUtils.smoothstep(time, 0, 1)) * 38 + departure * 55;
     duels.forEach((duel, i) => {
       const pursuit = Math.min(time, 5);
       const targetTime = Math.min(time, duel.hitAt);
       const hunterU = i ? .96 - pursuit * .12 : .04 + pursuit * .12;
       const rebelU = i ? .46 - targetTime * .055 : .54 + targetTime * .1;
       const y = rows[i];
-      duel.pose(time, position(hunterU, y - .025, -10),
-        position(rebelU, y + Math.sin(targetTime * 1.7) * .02, -14), size, pixel);
+      duel.pose(time, position(hunterU, y - .025, -10 - distance),
+        position(rebelU, y + Math.sin(targetTime * 1.7) * .02, -14 - distance), size, pixel, departure);
     });
   }
   return { duels, pose, getState: () => duels.map((duel) => duel.getState()) };

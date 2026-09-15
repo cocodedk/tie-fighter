@@ -3,6 +3,8 @@ import { box, mesh } from './parts.js';
 import { makeVader } from './vader.js';
 import { createVictoryBattle } from './victory-battle.js';
 
+export const victoryLoopSeconds = 8;
+
 export function createVictoryScene() {
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0x070a11);
@@ -49,15 +51,15 @@ export function createVictoryScene() {
     platform.position.x = vader.actor.position.x;
     platform.scale.setScalar(actorScale);
     platform.position.y = vader.actor.position.y - .6 * actorScale;
-    const gesture = THREE.MathUtils.smoothstep(time, .6, 2.8);
+    const gesture = THREE.MathUtils.smoothstep(time, .6, 2.8) * (1 - THREE.MathUtils.smoothstep(time, 5.2, 7.8));
     vader.actor.rotation.y = .25 - gesture * .32;
     vader.arms[1].rotation.z = gesture * 1.1;
     vader.forearms[1].rotation.z = gesture * 1.9;
     vader.arms[1].rotation.x = -gesture * .35;
     vader.arms[0].rotation.z = -.16;
     vader.head.rotation.y = -gesture * .08;
-    vader.cape.rotation.x = time < 5 ? Math.sin(time * 1.7) * .025 : 0;
-    vader.blade.scale.y = THREE.MathUtils.smoothstep(time, .1, 1);
+    vader.cape.rotation.x = Math.sin(time * Math.PI * 2 / victoryLoopSeconds) * .025;
+    vader.blade.scale.y = THREE.MathUtils.smoothstep(time, .1, 1) * (1 - THREE.MathUtils.smoothstep(time, 6.6, 7.8));
     battle.pose(time, camera, width, height, rtl);
   }
   return { scene, camera, vader, battle, pose };
