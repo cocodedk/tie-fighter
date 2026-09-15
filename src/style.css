@@ -4,6 +4,7 @@
 @import './effects.css';
 @import './career.css';
 @import './victory.css';
+@import './ship-select.css';
 
 :root {
   color-scheme: dark;

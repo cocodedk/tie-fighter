@@ -30,8 +30,13 @@
       <section class="intro" aria-labelledby="title">
         <h1 id="title" data-text="readyTitle">TIE Fighter game</h1>
         <p class="description" id="description" data-text="readyDescription">Hunt X-wings and dodge their red lasers. The patrol ends at zero hull or three escapes.</p>
+        <fieldset id="ship-select" disabled>
+          <legend>Choose your ship</legend>
+          <label><input type="radio" name="ship" value="fighter" checked /><span>TIE Fighter</span></label>
+          <label><input type="radio" name="ship" value="interceptor" /><span>TIE Interceptor</span></label>
+        </fieldset>
         <div class="launch-actions">
-        <button id="start" type="button" disabled data-text="launch">LAUNCH FIGHTER</button>
+        <button id="start" type="button" disabled data-text="launch">Launch</button>
           <button id="service-open" type="button" disabled data-career="service">Service record</button>
         </div>
         <p class="start-hint" id="start-hint" data-text="enter">Or press Enter</p>

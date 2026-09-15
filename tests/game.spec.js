@@ -61,7 +61,7 @@ test('keyboard gameplay also works when WebMCP is unavailable', async () => {
     const page = await browser.newPage();
     await page.goto(test.info().project.use.baseURL);
     expect(await page.evaluate(() => typeof document.modelContext)).toBe('undefined');
-    await page.getByRole('button', { name: 'LAUNCH FIGHTER' }).click();
+    await page.getByRole('button', { name: 'Launch', exact: true }).click();
     await expect(page.locator('#overlay')).toBeHidden();
     await holdKey(page, 'Space', 1500);
     await expect(page.locator('#score')).toHaveText('0100');

@@ -1,5 +1,6 @@
 import { getState } from './state.js';
 import { start, pause, resume } from './game.js';
+import { shipTypes } from './player.js';
 import { controlFighter } from './agent-control.js';
 
 const emptyInput = { type: 'object', properties: {}, additionalProperties: false };
@@ -10,7 +11,7 @@ export async function registerWebMCP() {
   const tools = [
     {
       name: 'get_game_state',
-      description: 'Read mode, score, best score, career kills, rank, medals, honors, hull health, kills until full repair, escapes, incoming laser positions and velocities, '
+      description: 'Read selected shipType, mode, score, best score, career kills, rank, medals, honors, hull health, kills until full repair, escapes, incoming laser positions and velocities, '
         + 'ship positions, flight bounds, and active shots. Player lasers travel toward negative Z; enemy lasers toward positive Z.',
       inputSchema: emptyInput,
       annotations: { readOnlyHint: true },
@@ -18,9 +19,12 @@ export async function registerWebMCP() {
     },
     {
       name: 'start_game',
-      description: 'Start a new TIE fighter run, resetting score and escapes, including during a run.',
-      inputSchema: emptyInput,
-      execute: () => { start(); return getState(); },
+      description: 'Start or reset a run, optionally choosing fighter or interceptor; otherwise keep the selected ship.',
+      inputSchema: {
+        type: 'object', additionalProperties: false,
+        properties: { shipType: { type: 'string', enum: shipTypes, description: 'Craft to fly in the new run.' } },
+      },
+      execute: ({ shipType } = {}) => { start(shipType); return getState(); },
     },
     {
       name: 'pause_game',

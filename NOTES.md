@@ -1,3 +1,18 @@
+## 2026-09-15 (Codex) — ship selection ready for publication
+
+**State:** Independent source and visual review approved; all eight production
+selection/layout checks passed using `/tmp/tie-ship-check.mjs`.
+
+**Tried:** Native radio controls exposed a hidden-state CSS override and a blocked
+Enter shortcut; both are fixed, and measured spacing clears both language HUDs.
+Screenshots are in `/tmp/tie-ships/`; the previous release is `7645eeb`.
+
+**Lesson:** Preserve native radio arrow keys without blocking the advertised launch
+shortcut, and verify actual visibility when custom display rules meet `hidden`.
+
+**Next:** Run the strict 35-test push gate, merge green CI, and verify the live
+ship choice, remembered preference, and production assets.
+
 ## 2026-09-14 (Codex) — Darth Vader ending ready for publication
 
 **State:** Independent source and visual review complete; all eight production

@@ -1,6 +1,6 @@
 # TIE Fighter
 
-A browser space shooter built with Three.js: fly a low-poly TIE fighter, aim at
+A browser space shooter built with Three.js: choose a low-poly TIE Fighter or TIE Interceptor, aim at
 X-wings, and hold the sector for as long as you can; no account needed.
 
 ![TIE Fighter game title beside a low-poly TIE fighter flying through a starfield.](public/og.png)
@@ -12,6 +12,8 @@ X-wings, and hold the sector for as long as you can; no account needed.
 
 ## Features
 
+- Choose your ship before launch; your preference is remembered across visits and languages.
+- Both craft share the current flight controls, hull, and weapons.
 - Procedural ships, green lasers, a red aiming cross, and a moving star field.
 - Keyboard and touch controls, with English and Persian interfaces.
 - Destroy X-wings for 100 points each; dodge their aimed red lasers.
@@ -25,7 +27,7 @@ X-wings, and hold the sector for as long as you can; no account needed.
 - Open **Service record** before flying, while paused, or after a run to see progress.
 - Native Chrome WebMCP tools for inspecting and controlling the game.
 
-Press Enter or select **Launch Fighter** to start; use WASD or arrow keys to move
+Press Enter or select **Launch** to start; use WASD or arrow keys to move
 and hold Space to fire; forward flight is automatic.
 On touch screens, use the direction buttons and hold Fire.
 Press Escape or select Pause to pause; switching tabs also pauses the game.

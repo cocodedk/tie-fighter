@@ -1,5 +1,6 @@
 import * as THREE from 'three';
-import { makeTie } from './tie.js';
+import { player } from './player.js';
+export { player } from './player.js';
 import { createStars } from './stars.js';
 import { text } from './i18n.js';
 
@@ -30,7 +31,6 @@ scene.add(sun);
 const rim = new THREE.DirectionalLight(0x567fad, 2.5);
 rim.position.set(20, 5, -30);
 scene.add(rim);
-export const player = makeTie();
 player.position.set(6, -0.8, -1);
 player.rotation.set(0.12, -0.35, -0.12);
 scene.add(player);

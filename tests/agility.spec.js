@@ -29,30 +29,32 @@ test('keyboard flight is fast, reverses immediately, and stops without camera dr
   expect(Math.abs((await callTool(page, 'get_game_state')).player.x)).toBeLessThan(0.5);
 });
 
-test('the complete banked TIE stays visible at every flight corner', async ({ page }) => {
-  await openGame(page);
-  const urls = await gameModuleUrls(page, ['world']);
-  for (const viewport of [{ width: 1280, height: 800 }, { width: 360, height: 800 }]) {
-    await page.setViewportSize(viewport);
-    for (const [horizontal, vertical] of [[-1, -1], [-1, 1], [1, -1], [1, 1]]) {
-      await callTool(page, 'start_game');
-      await callTool(page, 'control_fighter', { horizontal, vertical, duration_ms: 1500 });
-      const visible = await page.evaluate(async (url) => {
-        const { camera, player } = await import(url);
-        const point = player.position.clone();
-        let visible = true;
-        player.updateMatrixWorld(true);
-        player.traverse((object) => {
-          const positions = object.geometry?.attributes.position;
-          if (!positions) return;
-          for (let i = 0; i < positions.count; i++) {
-            point.fromBufferAttribute(positions, i).applyMatrix4(object.matrixWorld).project(camera);
-            if (Math.abs(point.x) > 0.995 || Math.abs(point.y) > 0.995) visible = false;
-          }
-        });
-        return visible;
-      }, urls.world);
-      expect(visible, `${viewport.width}px corner ${horizontal},${vertical}`).toBe(true);
+for (const shipType of ['fighter', 'interceptor']) {
+  test(`the complete banked ${shipType} stays visible at every flight corner`, async ({ page }) => {
+    await openGame(page);
+    const urls = await gameModuleUrls(page, ['world']);
+    for (const viewport of [{ width: 1280, height: 800 }, { width: 360, height: 800 }]) {
+      await page.setViewportSize(viewport);
+      for (const [horizontal, vertical] of [[-1, -1], [-1, 1], [1, -1], [1, 1]]) {
+        await callTool(page, 'start_game', { shipType });
+        await callTool(page, 'control_fighter', { horizontal, vertical, duration_ms: 1500 });
+        const visible = await page.evaluate(async (url) => {
+          const { camera, player } = await import(url);
+          const point = player.position.clone();
+          let visible = true;
+          player.updateMatrixWorld(true);
+          player.traverse((object) => {
+            const positions = object.geometry?.attributes.position;
+            if (!positions) return;
+            for (let i = 0; i < positions.count; i++) {
+              point.fromBufferAttribute(positions, i).applyMatrix4(object.matrixWorld).project(camera);
+              if (Math.abs(point.x) > 0.995 || Math.abs(point.y) > 0.995) visible = false;
+            }
+          });
+          return visible;
+        }, urls.world);
+        expect(visible, `${viewport.width}px corner ${horizontal},${vertical}`).toBe(true);
+      }
     }
-  }
-});
+  });
+}
