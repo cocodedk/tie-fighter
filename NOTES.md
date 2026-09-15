@@ -1,3 +1,18 @@
+## 2026-09-15 (Codex) — four Interceptor cannons ready for publication
+
+**State:** Independent cannon/model/test review approved; 10 focused tests and
+eight production checks passed via `/tmp/tie-guns-check.mjs`; screenshots are in
+`/tmp/tie-guns/`, and the previous ship-selection release is `e52b49b`.
+
+**Tried:** Explicit muzzle transforms keep banked lasers aligned with all four
+wing guns; swept tests verify each path hits and the empty center does not.
+
+**Lesson:** Model weapon mounts explicitly so shared cockpit geometry cannot
+give ships the wrong armament.
+
+**Next:** Run the strict 38-test gate, merge green CI, and verify the live update;
+review also noted an existing Persian phone Pause/Hull overlap for a separate fix.
+
 ## 2026-09-15 (Codex) — ship selection ready for publication
 
 **State:** Independent source and visual review approved; all eight production

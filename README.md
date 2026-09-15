@@ -13,7 +13,8 @@ X-wings, and hold the sector for as long as you can; no account needed.
 ## Features
 
 - Choose your ship before launch; your preference is remembered across visits and languages.
-- Both craft share the current flight controls, hull, and weapons.
+- Fighter: two chin-mounted laser cannons; Interceptor: four wing-mounted cannons.
+- Lasers fire from their mounts and converge on the red aiming cross.
 - Procedural ships, green lasers, a red aiming cross, and a moving star field.
 - Keyboard and touch controls, with English and Persian interfaces.
 - Destroy X-wings for 100 points each; dodge their aimed red lasers.

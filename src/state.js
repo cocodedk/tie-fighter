@@ -21,6 +21,7 @@ export function getState() {
   return {
     mode: state.mode,
     shipType: player.userData.shipType,
+    cannonCount: player.userData.muzzles.length,
     score: state.score,
     bestScore: state.bestScore,
     career: getCareer(),
@@ -36,6 +37,7 @@ export function getState() {
     bounds,
     enemies: state.enemies.map(({ ship }) => position(ship.position)),
     activeShots: state.shots.length,
+    activeLasers: state.shots.reduce((total, shot) => total + shot.lasers.length, 0),
     enemyShots: state.enemyShots.map(({ mesh, velocity }) => ({
       ...position(mesh.position), velocity: position(velocity),
     })),

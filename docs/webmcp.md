@@ -3,8 +3,8 @@
 Enable `chrome://flags/#enable-webmcp-testing`, relaunch Chrome, and open the game.
 Five native tools are exposed through `document.modelContext`:
 
-- `get_game_state`: mode, `shipType`, score, `bestScore`, `health`, `maxHealth`, escapes,
-  positions, bounds, and active projectiles; `enemyShots` includes positions and
+- `get_game_state`: mode, `shipType`, `cannonCount`, score, `bestScore`, `health`, `maxHealth`, escapes,
+  positions, bounds, `activeShots` (linked volleys), and `activeLasers` (visible beams); `enemyShots` includes positions and
   fixed velocities, and `invulnerableSeconds` reports protection after a hit.
   `career` includes lifetime `kills`, `campaignKills`, `bestRun`, `rank`, `nextRank`, and medals/honors
   with kill thresholds and `earned` flags; new games retain earned awards.
