@@ -13,6 +13,7 @@ export function selectShip(type) {
   player.clear();
   player.add(models.get(type));
   player.userData.shipType = type;
+  player.userData.muzzles = models.get(type).userData.muzzles;
   try { localStorage.setItem(storageKey, type); } catch {
     // The current choice still works when storage is unavailable.
   }

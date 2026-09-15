@@ -1,5 +1,6 @@
 import * as THREE from 'three';
-import { mesh, boltGeometry, laserMaterial, sparkGeometry, sparkMaterial, metal } from './parts.js';
+import { mesh, sparkGeometry, sparkMaterial, metal } from './parts.js';
+import { createVolley } from './cannons.js';
 import { scene, player } from './world.js';
 import { state, maxHealth, killsPerRepair } from './state.js';
 import { updateHud, showRepair } from './ui.js';
@@ -11,12 +12,9 @@ const segment = new THREE.Line3();
 const closest = new THREE.Vector3();
 
 export function fire() {
-  const bolts = new THREE.Group();
-  for (const side of [-1, 1]) mesh(bolts, boltGeometry, laserMaterial, side * 0.42);
-  bolts.position.copy(player.position);
-  bolts.position.z -= 1.3;
-  scene.add(bolts);
-  state.shots.push({ mesh: bolts, previous: bolts.position.clone() });
+  const shot = createVolley(player);
+  scene.add(shot.mesh);
+  state.shots.push(shot);
 }
 
 function explode(position) {
@@ -32,16 +30,21 @@ export function updateCombat(dt) {
   const { shots, enemies, debris } = state;
   for (let i = shots.length - 1; i >= 0; i--) {
     const shot = shots[i];
-    shot.previous.copy(shot.mesh.position);
-    shot.mesh.position.z -= 125 * dt;
+    for (const laser of shot.lasers) {
+      laser.previous.copy(laser.mesh.position);
+      laser.mesh.position.addScaledVector(laser.velocity, dt);
+    }
     let hit = false;
     for (let j = enemies.length - 1; j >= 0; j--) {
       const enemy = enemies[j];
-      // Sweep in the enemy's frame of reference so fast bolts cannot skip targets.
-      segment.start.copy(shot.previous).sub(enemy.previous);
-      segment.end.copy(shot.mesh.position).sub(enemy.ship.position);
-      segment.closestPointToPoint(closest.set(0, 0, 0), true, closest);
-      if (closest.lengthSq() < 2.1 * 2.1) {
+      // Sweep every visible beam so wing-mounted cannons hit along their actual paths.
+      const intersects = shot.lasers.some((laser) => {
+        segment.start.copy(laser.previous).sub(enemy.previous);
+        segment.end.copy(laser.mesh.position).sub(enemy.ship.position);
+        segment.closestPointToPoint(closest.set(0, 0, 0), true, closest);
+        return closest.lengthSq() < 2.1 * 2.1;
+      });
+      if (intersects) {
         explode(enemy.ship.position);
         scene.remove(enemy.ship);
         enemies.splice(j, 1);
@@ -62,7 +65,7 @@ export function updateCombat(dt) {
         break;
       }
     }
-    if (hit || shot.mesh.position.z < -150) {
+    if (hit || shot.lasers.every((laser) => laser.mesh.position.z < -150)) {
       scene.remove(shot.mesh);
       shots.splice(i, 1);
     }
