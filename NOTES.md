@@ -1,3 +1,19 @@
+## 2026-09-15 (Codex) — Vader background battle ready for publication
+
+**State:** Independent source and test review approved; two scripted pursuits
+show the Fighter destroying an X-wing and Interceptor destroying an A-wing.
+Production validation is in `/tmp/tie-battle-check.mjs`, screenshots in
+`/tmp/tie-battle/`; the previous release is `d3a9800`.
+
+**Tried:** WebMCP exposes both battle phases; tests check real cannon counts,
+explosions, replay reset, frozen gameplay, and a stable reduced-motion ending.
+
+**Lesson:** Check animated ship paths against window beams on short screens;
+ship banking must expose the A-wing silhouette at its displayed size.
+
+**Next:** Finish eight production layout checks, run the strict 40-test push
+gate, merge green CI, and verify the deployed battle and production assets.
+
 ## 2026-09-15 (Codex) — four Interceptor cannons ready for publication
 
 **State:** Independent cannon/model/test review approved; 10 focused tests and

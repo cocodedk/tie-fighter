@@ -14,12 +14,14 @@ export let victoryScene;
 
 export function getVictory() {
   return { active: victory.active, elapsedSeconds: victory.elapsed,
-    complete: victory.elapsed >= 5, finale: victory.finale };
+    complete: victory.elapsed >= 5, finale: victory.finale,
+    battle: victory.active ? victoryScene.battle.getState() : [] };
 }
 
 export function showVictory(finale = false) {
   victoryScene ??= createVictoryScene();
   Object.assign(victory, { active: true, elapsed: 0, finale });
+  victoryScene.pose(0, window.innerWidth, window.innerHeight, language === 'fa');
   $('service-record').close();
   $('victory-action').textContent = finale ? text.newGame : text.back;
   document.body.classList.add('celebrating');
