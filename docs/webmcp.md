@@ -3,7 +3,7 @@
 Enable `chrome://flags/#enable-webmcp-testing`, relaunch Chrome, and open the game.
 Five native tools are exposed through `document.modelContext`:
 
-- `get_game_state`: mode, `shipType`, `cannonCount`, score, `bestScore`, `health`, `maxHealth`, escapes,
+- `get_game_state`: mode, `shipType`, `cannonCount`, score, `runKills`, `bestScore`, `health`, `maxHealth`, escapes,
   positions, bounds, `activeShots` (linked volleys), and `activeLasers` (visible beams); `enemyShots` includes positions and
   fixed velocities, and `invulnerableSeconds` reports protection after a hit.
   `career` includes lifetime `kills`, `campaignKills`, `bestRun`, `rank`, `nextRank`, and medals/honors
@@ -14,6 +14,8 @@ Five native tools are exposed through `document.modelContext`:
   with `victory.battle` listing each `attacker`, `target`, `activeLasers`, and `phase`
   (`tracking`, `firing`, or `destroyed`); the list is empty when the scene is closed,
   and `start_game` begins a new campaign while `resume_game` cannot resume a win.
+  Each enemy includes `type` (`xwing` or `awing`), `points`, and `escapePenalty`;
+  A-wings award 200 points, never fire, and may escape without ending the patrol.
   `killsUntilRepair` counts down to a full hull repair every five kills.
 - `start_game`: start or reset a run; optionally pass `shipType: "fighter"` or
   `shipType: "interceptor"`, or omit it to use the remembered choice.

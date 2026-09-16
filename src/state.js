@@ -5,12 +5,12 @@ import { getVictory } from './victory.js';
 
 export const maxHealth = 3;
 export const killsPerRepair = 5;
-export const killsUntilRepair = (score) => killsPerRepair - (score / 100) % killsPerRepair;
+export const killsUntilRepair = (runKills) => killsPerRepair - runKills % killsPerRepair;
 
 export const state = {
-  mode: 'ready', score: 0, bestScore: readBestScore(), escapes: 0, elapsed: 0,
+  mode: 'ready', score: 0, runKills: 0, bestScore: readBestScore(), escapes: 0, elapsed: 0,
   health: maxHealth, invulnerableTime: 0, damageTime: 0, victoryPending: false,
-  fireCooldown: 0, spawnCooldown: 0, noticeTime: 0, hitTime: 0,
+  fireCooldown: 0, spawnCooldown: 0, bonusCooldown: 10, noticeTime: 0, hitTime: 0,
   keys: new Set(), enemies: [], shots: [], enemyShots: [], debris: [], agent: null,
 };
 export const bounds = { x: 12, y: 7 };
@@ -23,19 +23,22 @@ export function getState() {
     shipType: player.userData.shipType,
     cannonCount: player.userData.muzzles.length,
     score: state.score,
+    runKills: state.runKills,
     bestScore: state.bestScore,
     career: getCareer(),
     victory: getVictory(),
     health: state.health,
     maxHealth,
-    killsUntilRepair: killsUntilRepair(state.score),
+    killsUntilRepair: killsUntilRepair(state.runKills),
     invulnerableSeconds: state.invulnerableTime,
     escapes: state.escapes,
     escapeLimit: 3,
     elapsedSeconds: state.elapsed,
     player: position(player.position),
     bounds,
-    enemies: state.enemies.map(({ ship }) => position(ship.position)),
+    enemies: state.enemies.map(({ ship, type, points, escapePenalty }) => ({
+      ...position(ship.position), type, points, escapePenalty,
+    })),
     activeShots: state.shots.length,
     activeLasers: state.shots.reduce((total, shot) => total + shot.lasers.length, 0),
     enemyShots: state.enemyShots.map(({ mesh, velocity }) => ({

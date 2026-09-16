@@ -26,6 +26,7 @@ test('later repair milestones restore all health, while intervening kills do not
   await page.evaluate(async (url) => {
     const { state } = await import(url);
     state.score = 900;
+    state.runKills = 9;
     state.health = 1;
   }, urls.state);
   expect(await fire(page)).toMatchObject({ health: 3, score: 1000, killsUntilRepair: 5 });

@@ -15,6 +15,7 @@ test('every promotion boundary unlocks correctly alongside medals, honors, and f
       Object.assign(career, { kills: kills - 1, bestRun: run - 1, campaignKills: kills - 1 });
       localStorage.setItem(careerKey, JSON.stringify(career));
       state.score = (run - 1) * 100;
+      state.runKills = run - 1;
       state.health = 1;
       updateHud(state);
     }, { urls, kills, run });

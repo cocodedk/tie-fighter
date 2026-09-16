@@ -18,9 +18,10 @@ X-wings, and hold the sector for as long as you can; no account needed.
 - Procedural ships, green lasers, a red aiming cross, and a moving star field.
 - Keyboard and touch controls, with English and Persian interfaces.
 - Destroy X-wings for 100 points each; dodge their aimed red lasers.
+- Optional A-wings weave past for 200 points; they never fire or count as escapes.
 - Three hull points, brief protection after a hit, and a visible damage flash.
 - Every five kills fully repair the hull; the HUD counts down to the next repair.
-- Zero hull or three escapes end the run; faster flight responds immediately.
+- Zero hull or three escaped X-wings end the run; faster flight responds immediately.
 - Your best score and pilot career are saved here and shared between both languages.
 - Six ranks, three medals, and three honors reward campaign and career kills.
 - Reach Darth Vader at 250 campaign kills to win with a low-poly looping victory animation.
