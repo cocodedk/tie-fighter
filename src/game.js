@@ -34,9 +34,9 @@ export function start(shipType = player.userData.shipType) {
     objects.length = 0;
   }
   Object.assign(state, {
-    score: 0, escapes: 0, elapsed: 0, fireCooldown: 0, victoryPending: false,
+    score: 0, runKills: 0, escapes: 0, elapsed: 0, fireCooldown: 0, victoryPending: false,
     health: maxHealth, invulnerableTime: 0, damageTime: 0,
-    spawnCooldown: 2.5, noticeTime: 0, hitTime: 0,
+    spawnCooldown: 2.5, bonusCooldown: 10, noticeTime: 0, hitTime: 0,
   });
   $('notice').textContent = '';
   $('hit').style.opacity = '0';

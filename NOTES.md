@@ -1,3 +1,12 @@
+## 2026-09-16 (Codex) — optional bonus A-wings
+
+**State:** Source review and four focused tests passed; previous release is `e53494e`.
+**Tried:** Native WebMCP checks distinguish bonus points from kills and prove missed
+A-wings cannot spend the final escape allowance; production QA is
+`/tmp/tie-bonus-check.mjs`, with screenshots in `/tmp/tie-bonus/`.
+**Lesson:** Observe terminal state instead of issuing flight controls after a forced escape.
+**Next:** Finish visual review, run the strict 45-test gate, and verify the public release.
+
 ## 2026-09-15 (Codex) — smooth victory loop
 
 **State:** Eight-second loop implemented; previous release is `a85e64c`.
@@ -80,17 +89,3 @@ CSS import order can override responsive typography even when the rules exist.
 
 **Next:** Run the mandatory push gate, merge a green PR, and verify the deployed
 career progression and production assets.
-
-## 2026-09-14 (Codex) — dogfight update ready for publication
-
-**State:** Gameplay changes and independent review complete through `cca1140`;
-all 19 native Chrome tests passed with tracing, no skips or retries.
-
-**Tried:** Earlier local runs had intermittent browser exits and startup failures;
-no concrete exit cause was found; diagnostics are in `/tmp/tie-game-trace-run.log`.
-
-**Lesson:** Test fixtures must import the running page’s exact module URLs;
-a separate import can create a second game and misleading physics failures.
-
-**Next:** Push through the mandatory verification hook, merge a green PR,
-and verify repairs on the deployed English and Persian pages.

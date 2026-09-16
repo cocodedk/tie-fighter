@@ -21,6 +21,7 @@ function fireAtPlayer(enemy) {
 export function updateEnemyFire(dt, previousPlayer) {
   state.invulnerableTime = Math.max(0, state.invulnerableTime - dt);
   for (const enemy of state.enemies) {
+    if (enemy.type === 'awing') continue;
     enemy.fireCooldown -= dt;
     const z = enemy.ship.position.z;
     // No point-blank shots; even the nearest shot gives time to react.

@@ -1,6 +1,7 @@
 # Pilot progression plan
 
 Kills build a permanent service record in this browser; restarting a run keeps it.
+Each destroyed ship counts as one kill, including 200-point bonus A-wings.
 Medals and honors are cosmetic; flight, damage, scoring, and five-kill repairs stay balanced.
 
 ## Ranks — kills in the current campaign
@@ -48,8 +49,8 @@ The HUD shows the current rank; a brief award banner announces new achievements.
 A Service record button on the launch, pause, and debrief screens opens the full
 record, with the next promotion, earned awards, and requirements for locked awards.
 English and Persian share progress; WebMCP exposes the same record for testing.
-The existing saved best score credits its known kills once; older run totals are
-unknown, so they cannot be reconstructed.
+A legacy best score from before bonus targets credits its known kills once; bonus-era
+scores cannot reconstruct a lost career record because ships award different points.
 
 ## Visual plan
 

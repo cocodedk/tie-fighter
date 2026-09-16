@@ -13,12 +13,12 @@ export function updateHud(state) {
   $('best-score').textContent = String(state.bestScore).padStart(4, '0');
   $('escapes').innerHTML = `${state.escapes} <small>/ 3</small>`;
   $('health').textContent = `${state.health} / ${maxHealth}`;
-  $('repair').textContent = text.repair(killsUntilRepair(state.score));
+  $('repair').textContent = text.repair(killsUntilRepair(state.runKills));
   $('health').dataset.low = state.health <= 1;
 }
 
 export function showMode(state) {
-  const { mode, score } = state;
+  const { mode, score, runKills } = state;
   updateShipSelector(mode);
   const playing = mode === 'playing';
   document.body.classList.toggle('playing', playing);
@@ -33,7 +33,7 @@ export function showMode(state) {
   if (mode === 'paused' || mode === 'over') {
     const paused = mode === 'paused';
     $('title').textContent = paused ? text.pausedTitle : destroyed ? text.destroyedTitle : text.overTitle;
-    $('description').textContent = paused ? text.pausedDescription : text.debrief(score);
+    $('description').textContent = paused ? text.pausedDescription : text.debrief(score, runKills);
     $('start').textContent = paused ? text.resume : text.again;
     $('start-hint').textContent = paused ? text.resumeHint : text.enter;
   }
@@ -47,6 +47,10 @@ export function showMode(state) {
 
 export function showEscape(remaining) {
   $('notice').textContent = text.escape(remaining);
+}
+
+export function showBonus() {
+  $('notice').textContent = text.bonus;
 }
 
 export function showRepair() {

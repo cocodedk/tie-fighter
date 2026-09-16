@@ -1,4 +1,4 @@
-import { readBestScore } from './scores.js';
+import { readLegacyKills } from './scores.js';
 
 export const careerKey = 'tie-fighter.career.v1';
 export const ranks = [
@@ -10,7 +10,7 @@ const honors = [['veteran', 50], ['elite', 100], ['legend', 250]];
 const validCount = (value) => Number.isSafeInteger(value) && value >= 0;
 
 function readCareer() {
-  const legacyKills = Math.floor(readBestScore() / 100);
+  const legacyKills = readLegacyKills();
   try {
     const saved = JSON.parse(localStorage.getItem(careerKey));
     if (saved && validCount(saved.kills) && validCount(saved.bestRun)
