@@ -1,4 +1,4 @@
-const base = 'https://cocodedk.github.io/tie-fighter/';
+const base = 'https://tiefighter.cocode.dk/';
 const repository = 'https://github.com/cocodedk/tie-fighter';
 const locales = {
   en: {
