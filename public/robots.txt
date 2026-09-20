@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://cocodedk.github.io/tie-fighter/sitemap.xml
+Sitemap: https://tiefighter.cocode.dk/sitemap.xml

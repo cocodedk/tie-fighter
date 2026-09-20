@@ -49,5 +49,5 @@ After deploying, the site owner can verify the production URL in
 [Google Search Console](https://search.google.com/search-console) and
 [Bing Webmaster Tools](https://www.bing.com/webmasters), add their issued HTML
 verification tags, and submit
-[the sitemap](https://cocodedk.github.io/tie-fighter/sitemap.xml).
+[the sitemap](https://tiefighter.cocode.dk/sitemap.xml).
 These account-only steps require owner access and are not part of the build.

@@ -2,8 +2,8 @@ import { readFile } from 'node:fs/promises';
 import { defineConfig } from 'vite';
 import siteMetadata from './scripts/site-meta.js';
 
-export default defineConfig(({ command, isPreview }) => ({
-  base: command === 'build' || isPreview ? '/tie-fighter/' : '/',
+export default defineConfig(() => ({
+  base: '/', // served at the root of tiefighter.cocode.dk
   build: { rolldownOptions: { input: ['index.html', 'fa/index.html'] } },
   plugins: [siteMetadata(), {
     name: 'publish-llms',

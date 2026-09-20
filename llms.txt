@@ -8,8 +8,8 @@ and optional native Chrome WebMCP tools. A WebGL2-capable browser is required.
 
 ## Play
 
-- [English game](https://cocodedk.github.io/tie-fighter/): Play in English.
-- [Persian game](https://cocodedk.github.io/tie-fighter/fa/): Play with a Persian interface.
+- [English game](https://tiefighter.cocode.dk/): Play in English.
+- [Persian game](https://tiefighter.cocode.dk/fa/): Play with a Persian interface.
 
 ## Development
 

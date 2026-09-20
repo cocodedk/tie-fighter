@@ -7,8 +7,8 @@ X-wings, and hold the sector for as long as you can; no account needed.
 
 ## Website
 
-- [Play in English](https://cocodedk.github.io/tie-fighter/)
-- [بازی به فارسی (Persian)](https://cocodedk.github.io/tie-fighter/fa/)
+- [Play in English](https://tiefighter.cocode.dk/)
+- [بازی به فارسی (Persian)](https://tiefighter.cocode.dk/fa/)
 
 ## Features
 
