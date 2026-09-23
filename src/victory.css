@@ -7,7 +7,7 @@
 #victory-action, #victory-replay { min-height: 44px; padding: 12px 22px; border: 1px solid #d5ae78; background: #d5ae78; color: #151718; font-weight: 600; }
 #victory-action:hover, #victory-replay:hover { background: #ead2ae; }
 #victory-replay { margin-top: 20px; background: transparent; color: #d5ae78; }
-body.celebrating .hud, body.celebrating #overlay, body.celebrating footer,
+body.celebrating .hud, body.celebrating #overlay, body.celebrating .frame-foot,
 body.celebrating #notice, body.celebrating #award-notice, body.celebrating #damage,
 body.celebrating #reticle, body.celebrating #hit, body.celebrating .touch-controls { visibility: hidden; }
 html[dir='rtl'] #victory-title { font-family: 'Vazirmatn', sans-serif; font-size: clamp(34px, 5.5vw, 72px); line-height: 1.3; }

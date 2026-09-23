@@ -9,6 +9,8 @@
     <!-- PUBLIC_SITE_METADATA -->
     <link rel="icon" href="/favicon.svg" />
     <link rel="stylesheet" href="/src/style.css" />
+    <link rel="stylesheet" href="https://brand.cocode.dk/v1.css">
+    <script type="module" src="https://brand.cocode.dk/v1.js"></script>
   </head>
   <body>
     <canvas id="game" aria-label="TIE fighter flight game" data-label="canvas"></canvas>
@@ -74,11 +76,16 @@
       </div>
       <button class="fire-button" type="button" data-control="TouchFire" data-text="fire">شلیک</button>
     </nav>
-    <footer>
-      <div class="controls"><span><kbd>WASD</kbd> / <kbd>↑↓←→</kbd> <span data-text="fly">حرکت</span></span><span><kbd>Space</kbd> <span data-text="fire">شلیک</span></span><span><kbd>Esc</kbd> <span data-text="pause">توقف</span></span></div>
-      <div class="credits"><span>© ۱۴۰۵</span><a href="https://cocode.dk" target="_blank" rel="noopener noreferrer">Cocode</a><span> / </span><a href="https://linkedin.com/in/babakbandpey" target="_blank" rel="noopener noreferrer">بابک بندپی</a><a class="language" href="../" lang="en" hreflang="en">English</a></div>
-      <span class="status" id="status" data-text="ready">منتظر خلبان</span>
-    </footer>
+    <div class="frame-foot">
+      <footer>
+        <div class="controls"><span><kbd>WASD</kbd> / <kbd>↑↓←→</kbd> <span data-text="fly">حرکت</span></span><span><kbd>Space</kbd> <span data-text="fire">شلیک</span></span><span><kbd>Esc</kbd> <span data-text="pause">توقف</span></span></div>
+        <div class="credits"><a class="language" href="../" lang="en" hreflang="en">English</a></div>
+        <span class="status" id="status" data-text="ready">منتظر خلبان</span>
+      </footer>
+      <cocode-foot repo="cocodedk/tie-fighter" dark>
+        <a href="https://cocode.dk">cocode.dk</a>
+      </cocode-foot>
+    </div>
     <script type="module" src="/src/boot.js"></script>
   </body>
 </html>

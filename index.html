@@ -9,6 +9,8 @@
     <!-- PUBLIC_SITE_METADATA -->
     <link rel="icon" href="/favicon.svg" />
     <link rel="stylesheet" href="/src/style.css" />
+    <link rel="stylesheet" href="https://brand.cocode.dk/v1.css">
+    <script type="module" src="https://brand.cocode.dk/v1.js"></script>
   </head>
   <body>
     <canvas id="game" aria-label="TIE fighter flight game" data-label="canvas"></canvas>
@@ -74,11 +76,20 @@
       </div>
       <button class="fire-button" type="button" data-control="TouchFire" data-text="fire">Fire</button>
     </nav>
-    <footer>
-      <div class="controls"><span><kbd>WASD</kbd> / <kbd>↑↓←→</kbd> <span data-text="fly">Fly</span></span><span><kbd>Space</kbd> <span data-text="fire">Fire</span></span><span><kbd>Esc</kbd> <span data-text="pause">Pause</span></span></div>
-      <div class="credits"><span>© 2026</span><a href="https://cocode.dk" target="_blank" rel="noopener noreferrer">Cocode</a><span> / </span><a href="https://linkedin.com/in/babakbandpey" target="_blank" rel="noopener noreferrer">Babak Bandpey</a><a class="language" href="./fa/" lang="fa" hreflang="fa">فارسی</a></div>
-      <span class="status" id="status" data-text="ready">Awaiting pilot</span>
-    </footer>
+    <!-- The game is a full-viewport canvas the flight code sizes from window.innerWidth/
+         innerHeight (src/world.js), so the family frame cannot take normal-flow header
+         space without breaking that math. Only the foot ships here, stacked with the
+         game's own footer bar in one fixed-bottom group. -->
+    <div class="frame-foot">
+      <footer>
+        <div class="controls"><span><kbd>WASD</kbd> / <kbd>↑↓←→</kbd> <span data-text="fly">Fly</span></span><span><kbd>Space</kbd> <span data-text="fire">Fire</span></span><span><kbd>Esc</kbd> <span data-text="pause">Pause</span></span></div>
+        <div class="credits"><a class="language" href="./fa/" lang="fa" hreflang="fa">فارسی</a></div>
+        <span class="status" id="status" data-text="ready">Awaiting pilot</span>
+      </footer>
+      <cocode-foot repo="cocodedk/tie-fighter" dark>
+        <a href="https://cocode.dk">cocode.dk</a>
+      </cocode-foot>
+    </div>
     <script type="module" src="/src/boot.js"></script>
   </body>
 </html>
