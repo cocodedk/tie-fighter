@@ -20,14 +20,25 @@
 .best-score b { color: #d5ae78; font-weight: 500; }
 .stats small { font-size: 14px; color: #9babb4; }
 #pause { position: fixed; top: 83px; inset-inline-end: 18px; background: #080c13ba; color: #edf0ee; border: 1px solid #647783; min-height: 44px; padding: 8px 14px; }
-#overlay { position: fixed; inset: 0; display: flex; align-items: safe center; overflow-y: auto; padding: 110px 24px 120px; background: linear-gradient(90deg, #080c13a8, transparent 85%); }
+/* Bottom padding reserves room above the fixed .frame-foot (game footer +
+   cocode-foot stacked, ~161px at this width) so the scrollable overlay never
+   parks a button behind it. */
+#overlay { position: fixed; inset: 0; display: flex; align-items: safe center; overflow-y: auto; padding: 110px 24px 170px; background: linear-gradient(90deg, #080c13a8, transparent 85%); }
 .intro { margin: 0; }
-footer { position: fixed; inset: auto 0 0; padding: 8px 18px max(10px, env(safe-area-inset-bottom)); display: flex; justify-content: space-between; align-items: center; gap: 16px; background: #080c1366; }
+/* The family frame's foot needs a fixed spot too, since the canvas fills the
+   viewport and nothing here scrolls. .frame-foot is the fixed anchor; the
+   game's own footer bar and <cocode-foot> stack inside it in normal flow. */
+.frame-foot { position: fixed; inset: auto 0 0; z-index: 3; }
+footer { padding: 8px 18px max(10px, env(safe-area-inset-bottom)); display: flex; justify-content: space-between; align-items: center; gap: 16px; background: #080c1366; }
 .credits { display: flex; flex-wrap: wrap; align-items: center; column-gap: 6px; font-size: 12px; }
 .credits a { display: inline-flex; min-width: 44px; min-height: 44px; align-items: center; }
-.language { margin-inline-start: 12px; padding-inline: 6px; }
+.language { padding-inline: 6px; }
 .status { display: none; font-size: 13px; color: #9babb4; }
 body.playing .credits { opacity: .8; }
+/* The game has no fixed-width column — the HUD and footer run edge to edge with
+   just a gutter, wider at desktop (see the 768px query below) — so the foot's
+   max-width is set past any real viewport and only the gutter does the work. */
+cocode-foot { --cocode-max: 2400px; --cocode-gutter: 18px; }
 #notice { position: fixed; top: 138px; inset-inline: 20px; text-align: center; color: #e6a283; pointer-events: none; font-size: 16px; }
 @media (min-width: 768px) {
   .hud { padding: 30px 36px; align-items: center; }
@@ -39,16 +50,17 @@ body.playing .credits { opacity: .8; }
   .stats strong { font-size: 30px; }
   .stats span { font-size: 14px; }
   #pause { position: static; }
-  #overlay { padding: 120px 9vw; }
+  #overlay { padding: 120px 9vw 140px; }
   .intro { margin-top: 0; }
   footer { padding: 10px 36px; flex-wrap: wrap; }
   .credits { font-size: 14px; }
+  cocode-foot { --cocode-gutter: 36px; }
 }
 @media (min-width: 1100px) {
   .status { display: block; }
 }
 @media (orientation: landscape) and (max-height: 550px) {
-  #overlay { padding-block: 112px 68px; }
+  #overlay { padding-block: 112px 140px; }
   .intro { margin: 0; width: 100%; }
   #overlay h1 { font-size: 56px; max-width: none; }
   html[dir='rtl'] #overlay h1 { font-size: 38px; max-width: none; }
