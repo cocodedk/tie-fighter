@@ -23,13 +23,13 @@ Five native tools are exposed through `document.modelContext`:
 - `control_fighter`: horizontal/vertical input (-1, 0, 1), `fire`, and `duration_ms`
   (50–3000, default 250); returns when the action completes or is interrupted.
 
-In Chrome 153's console, discover and invoke tools:
+In Chrome's console, discover and invoke tools:
 
 ```js
 const tools = await document.modelContext.getTools();
 const call = async (name, args = {}) => JSON.parse(
   await document.modelContext.executeTool(
-    tools.find(tool => tool.name === name), JSON.stringify(args)
+    tools.find(tool => tool.name === name), args
   )
 );
 await call('start_game', { shipType: 'interceptor' });
@@ -37,7 +37,9 @@ await call('control_fighter', { fire: true, duration_ms: 1000 });
 await call('get_game_state');
 ```
 
-Chrome 155+ also accepts an argument object instead of the JSON string.
+`executeTool` takes the arguments as an object and resolves to a JSON string
+(spec draft of 20 October 2026). Chrome 153 took a JSON string instead
+(`JSON.stringify(args)`); current Chrome rejects that.
 Keep the game tab visible while running flight tools; switching tabs pauses it.
 Normal keyboard play works without WebMCP support.
 See [Chrome's imperative API documentation](https://developer.chrome.com/docs/ai/webmcp/imperative-api)

@@ -19,7 +19,7 @@ export async function callTool(page, name, input = {}) {
   return page.evaluate(async ({ toolName, arguments: args }) => {
     const context = document.modelContext;
     const tool = (await context.getTools()).find((entry) => entry.name === toolName);
-    return JSON.parse(await context.executeTool(tool, JSON.stringify(args)));
+    return JSON.parse(await context.executeTool(tool, args));
   }, { toolName: name, arguments: input });
 }
 
